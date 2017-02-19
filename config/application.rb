@@ -18,7 +18,7 @@ module FrontDesk
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
 
-    config.autoload_paths += %W(\#{config.root}/lib)
+    config.autoload_paths << Rails.root.join('lib')
 
   end
 end
