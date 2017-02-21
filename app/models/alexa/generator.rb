@@ -1,13 +1,13 @@
 class Alexa::Generator
   def initialize
-
+    @model = Alexa::FrontDeskInteractionModel.build
   end
 
-  def utterances
-    puts "foo"
+  def sample_utterances(intent)
+    @model.sample_utterances(intent)
   end
 
-  def intents
-    puts "foo"
+  def intent_schema
+    @model.intent_schema
   end
 end
