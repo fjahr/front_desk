@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'doorkeeper'
 gem 'devise'
 gem 'pg'
+gem 'alexa_rubykit', git: 'git@github.com:damianFC/alexa-rubykit.git'
 
 # prelim change to track development of active admin 1.0
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'

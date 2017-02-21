@@ -1,4 +1,12 @@
 GIT
+  remote: git@github.com:damianFC/alexa-rubykit.git
+  revision: 923e91454a857ecc79a9961528ec7d8451854450
+  specs:
+    alexa_rubykit (1.1.1)
+      bundler (~> 1.7)
+      rake
+
+GIT
   remote: https://github.com/activeadmin/activeadmin
   revision: e9c65ab9c00345ddca4677ff81ca2082f18c2462
   specs:
@@ -263,6 +271,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  alexa_rubykit!
   byebug
   coffee-rails (~> 4.2)
   devise
