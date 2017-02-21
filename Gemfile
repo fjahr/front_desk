@@ -37,6 +37,7 @@ gem 'doorkeeper'
 gem 'devise'
 gem 'pg'
 gem 'alexa_rubykit', git: 'git@github.com:damianFC/alexa-rubykit.git'
+gem 'alexa_generator'
 
 # prelim change to track development of active admin 1.0
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
