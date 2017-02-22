@@ -17,13 +17,19 @@ class Alexa::Response
       resp.add_speech("I can not find the person you are looking for.")
     end
 
-
     resp.build_response
   end
 
   private
 
   def intent_name
-    @request["intent"]["name"]
+    begin
+      @request["intent"]["name"]
+    rescue
+      raise InvalidRequestError, "No intent or intent name found in request"
+    end
   end
+end
+
+class InvalidRequestError < StandardError
 end
