@@ -1,6 +1,6 @@
 class Alexa::Generator
-  def initialize
-    @model = Alexa::FrontDeskInteractionModel.build
+  def initialize(model = Alexa::FrontDeskInteractionModel.build)
+    @model = model
   end
 
   def sample_utterances(intent)
