@@ -7,25 +7,12 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
   def create
     # deactivated for testing
     # user = current_doorkeeper_user
+    # render status: 401 unless user
 
-    resp = AlexaRubykit::Response.new
+    render status: 400 unless params["request"]
+    resp = ::Alexa::Response.new(params["request"])
 
-    case intent_name
-    when "NotifyArrival"
-      # pokemon = Pokemon.order(vote_count: :desc).first
-
-      resp.add_speech('Ruby is running ready!')
-      # message = "The hottest pokemon is Sandra Hoang Fabian!"
-      # render response_with_message(message)
-    when "LastPokemonVote"
-      # pokemon = user.votes.order(created_at: :desc).first.pokemon
-      # message = "Your last vote was for #{pokemon.name}"
-      # render response_with_message(message)
-    else
-      resp.add_speech("I can not find the person you are looking for.")
-    end
-
-    render json: resp.build_response
+    render json: resp.build
   end
 
   def current_doorkeeper_user
@@ -33,25 +20,6 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
   end
 
   private
-
-  def intent_name
-    params["request"]["intent"]["name"]
-  end
-
-  def response_with_message(message)
-    {
-      json: {
-         "response": {
-           "outputSpeech": {
-             "type": "PlainText",
-             "text": message,
-           },
-           "shouldEndSession": true
-         },
-         "sessionAttributes": {}
-       }
-     }
-  end
 
   def set_access_token_in_params
     request.parameters[:access_token] = token_from_params
