@@ -42,7 +42,7 @@ RSpec.describe Alexa::Response do
          "response":{
             "outputSpeech":{
               "type":"PlainText",
-              "text":"Ruby is running ready!"
+              "text":"Implement me"
             },
             "shouldEndSession":true
           }

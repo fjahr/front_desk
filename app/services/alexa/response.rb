@@ -8,13 +8,15 @@ class Alexa::Response
 
     case intent_name
     when "NotifyArrival"
-      # pokemon = Pokemon.order(vote_count: :desc).first
-
-      resp.add_speech('Ruby is running ready!')
-      # message = "The hottest pokemon is Sandra Hoang Fabian!"
-      # render response_with_message(message)
+      resp.add_speech('Implement me')
+    when "AMAZON.SearchAction<object@WeatherForecast>"
+      resp.add_speech('No idea')
+    when "AMAZON.HelpIntent"
+      resp.add_speech("Let me know who you are and who you are looking to meet.")
+    when "AMAZON.StopIntent"
+      resp.add_speech("")
     else
-      resp.add_speech("I can not find the person you are looking for.")
+      resp.add_speech('Sorry, something went wrong. Please try again.')
     end
 
     resp.build_response
