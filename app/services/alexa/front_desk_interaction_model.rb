@@ -10,6 +10,11 @@ class Alexa::FrontDeskInteractionModel
         intent.add_utterance_template('to tell {John Doe|EmployeeName} that {John Doe|VisitorName} is here to see him')
         intent.add_utterance_template('to tell {John Doe|EmployeeName} that {John Doe|VisitorName} is here')
       end
+
+      model.add_intent(:"AMAZON.HelpIntent") do |intent|
+        intent.add_utterance_template('help')
+        intent.add_utterance_template('to help')
+      end
     end
   end
 end
