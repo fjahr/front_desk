@@ -9,12 +9,10 @@ class Alexa::Response
     case intent_name
     when "NotifyArrival"
       resp.add_speech('Implement me')
-    when "AMAZON.SearchAction<object@WeatherForecast>"
-      resp.add_speech('No idea')
     when "AMAZON.HelpIntent"
-      resp.add_speech("Let me know who you are and who you are looking to meet.")
-    when "AMAZON.StopIntent"
-      resp.add_speech("")
+      resp.add_speech(
+        "Let me know who you are and who you are looking to meet. If you don't know who you want to meet, just say anyone."
+      )
     else
       resp.add_speech('Sorry, something went wrong. Please try again.')
     end
