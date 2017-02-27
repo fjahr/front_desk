@@ -38,6 +38,10 @@ gem 'devise'
 gem 'pg'
 gem 'alexa_rubykit', git: 'git@github.com:damianFC/alexa-rubykit.git'
 gem 'alexa_generator'
+gem 'bootstrap', '~> 4.0.0.alpha6'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
 # prelim change to track development of active admin 1.0
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
