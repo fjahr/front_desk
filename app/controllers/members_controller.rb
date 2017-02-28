@@ -1,4 +1,11 @@
 class MembersController < InheritedResources::Base
+  def new
+    @member = Member.new(account: current_user.account)
+  end
+
+  def show
+    @member = current_user.account.members.find_by(sequential_id: params[:id])
+  end
 
   private
 
