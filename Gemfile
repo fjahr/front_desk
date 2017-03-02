@@ -43,7 +43,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 gem 'sequenced'
-gem 'capybara'
 
 # prelim change to track development of active admin 1.0
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
@@ -56,6 +55,10 @@ group :development, :test do
   gem 'rspec-rails', '>= 3.5.0'
   gem 'factory_girl_rails'
   gem 'ffaker'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'simplecov', :require => false
+  gem 'vcr'
 end
 
 group :development do
