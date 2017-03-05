@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :members
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {
@@ -8,6 +7,8 @@ Rails.application.routes.draw do
   use_doorkeeper
 
   resource :account
+  resource :subscription
+  resources :members
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
