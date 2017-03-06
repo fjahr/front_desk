@@ -12,5 +12,16 @@
  *
  *= require_self
  *= require signin
+ *= require stripe
  */
 @import "bootstrap";
+
+#back {
+  background-color: #f7f7f9;
+}
+
+nav.navbar {
+  border-bottom-style: solid;
+  border-bottom-color: #0068A8;
+  border-bottom-width: 2px;
+}
