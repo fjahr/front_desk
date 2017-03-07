@@ -1,0 +1,117 @@
+<h1>Update Card</h1>
+
+<%= form_tag subscription_path, method: :put, id: "payment-form" do %>
+  <div class="form-row">
+    <div id="card-errors"></div>
+
+    <label for="card-element">
+      Credit or debit card
+    </label>
+    <div id="card-element">
+    </div>
+
+  </div>
+
+  <button>Submit Payment</button>
+<% end %>
+
+<script>
+// Create a Stripe client
+var stripe = Stripe($("meta[name='stripe-public-key']").attr("content"))
+
+// Create an instance of Elements
+var elements = stripe.elements();
+
+// Custom styling can be passed to options when creating an Element.
+// (Note that this demo uses a wider set of styles than the guide below.)
+var style = {
+  base: {
+    color: '#32325d',
+    lineHeight: '24px',
+    fontFamily: 'Helvetica Neue',
+    fontSmoothing: 'antialiased',
+    fontSize: '16px',
+    '::placeholder': {
+      color: '#aab7c4'
+    }
+  },
+  invalid: {
+    color: '#fa755a',
+    iconColor: '#fa755a'
+  }
+};
+
+// Create an instance of the card Element
+var card = elements.create('card', {style: style});
+
+// Add an instance of the card Element into the `card-element` <div>
+card.mount('#card-element');
+
+function stripeTokenHandler(token) {
+  // Insert the token ID into the form so it gets submitted to the server
+  var form = document.getElementById('payment-form');
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripeToken');
+  hiddenInput.setAttribute('value', token.id);
+  form.appendChild(hiddenInput);
+
+  var cardBrand = document.createElement('input');
+  cardBrand.setAttribute('type', 'hidden');
+  cardBrand.setAttribute('name', 'card_brand');
+  cardBrand.setAttribute('value', token.card.brand);
+  form.appendChild(cardBrand);
+
+  var cardExpMonth = document.createElement('input');
+  cardExpMonth.setAttribute('type', 'hidden');
+  cardExpMonth.setAttribute('name', 'card_exp_month');
+  cardExpMonth.setAttribute('value', token.card.exp_month);
+  form.appendChild(cardExpMonth);
+
+  var cardExpYear = document.createElement('input');
+  cardExpYear.setAttribute('type', 'hidden');
+  cardExpYear.setAttribute('name', 'card_exp_year');
+  cardExpYear.setAttribute('value', token.card.exp_year);
+  form.appendChild(cardExpYear);
+
+  var cardLast4 = document.createElement('input');
+  cardLast4.setAttribute('type', 'hidden');
+  cardLast4.setAttribute('name', 'card_last4');
+  cardLast4.setAttribute('value', token.card.last4);
+  form.appendChild(cardLast4);
+
+  // Submit the form
+  form.submit();
+}
+
+function createToken() {
+  stripe.createToken(card).then(function(result) {
+    if (result.error) {
+      // Inform the user if there was an error
+      var errorElement = document.getElementById('card-errors');
+      errorElement.textContent = result.error.message;
+    } else {
+      // Send the token to your server
+      stripeTokenHandler(result.token);
+    }
+  });
+};
+
+// Create a token when the form is submitted.
+var form = document.getElementById('payment-form');
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  createToken();
+});
+
+card.addEventListener('change', function(event) {
+  var displayError = document.getElementById('card-errors');
+  if (event.error) {
+    displayError.textContent = event.error.message;
+  } else {
+    displayError.textContent = '';
+  }
+});
+</script>
+
+

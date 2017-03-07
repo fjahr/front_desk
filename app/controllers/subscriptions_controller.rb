@@ -7,6 +7,9 @@ class SubscriptionsController < ApplicationController
   def edit
   end
 
+  def show
+  end
+
   def create
     begin
       account = current_user.account
@@ -35,5 +38,35 @@ class SubscriptionsController < ApplicationController
       flash.alert = "There was an error with our payment processor. Please try again and contact support if the error persists."
       render action: :new
     end
+  end
+
+  def update
+    # begin
+      account = current_user.account
+      token = params[:stripeToken]
+
+      customer = account.stripe_customer
+      source = customer.sources.create(source: token)
+      customer.default_source = source.id
+      customer.save
+
+      account.assign_attributes(
+         card_brand: params[:card_brand],
+         card_last4: params[:card_last4],
+         card_exp_month: params[:card_exp_month],
+         card_exp_year: params[:card_exp_year]
+      )
+      account.save
+
+      flash.notice = "Card was successfully updated."
+      redirect_to subscription_path
+    # rescue Stripe::CardError => e
+    #   flash.alert = e.message
+    #   render action: :edit
+    # rescue
+    #   flash.alert = "There was an error with our payment processor. Please try again and contact support if the error persists."
+    #   render action: :edit
+    # end
+
   end
 end

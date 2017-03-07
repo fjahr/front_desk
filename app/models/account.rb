@@ -2,6 +2,10 @@ class Account < ApplicationRecord
   belongs_to :user
   has_many :members
 
+  def stripe_customer
+    Stripe::Customer.retrieve(stripe_id)
+  end
+
   def stripe_customer_or_new(token)
     if stripe_id.present?
       Stripe::Customer.retrieve(stripe_id)
