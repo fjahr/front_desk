@@ -7,6 +7,11 @@ class MembersController < InheritedResources::Base
     @member = current_user.account.members.find_by(sequential_id: params[:id])
   end
 
+  def index
+    @members = current_user.account.members.all
+  end
+
+
   private
 
     def member_params
