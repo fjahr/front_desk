@@ -2,15 +2,15 @@
 
 <%= form_tag subscription_path, id: "payment-form" do %>
   <div class="form-row">
+    <div id="card-errors"></div>
+
     <label for="card-element">
       Credit or debit card
     </label>
     <div id="card-element">
-      <!-- a Stripe Element will be inserted here. -->
     </div>
 
-    <!-- Used to display form errors -->
-    <div id="card-errors"></div>
+    <%= hidden_field_tag :plan, current_plan %>
   </div>
 
   <button>Submit Payment</button>

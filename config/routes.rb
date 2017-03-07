@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resource :account
   resource :subscription
   resources :members
+  resource :dashboard, only: [:show]
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
