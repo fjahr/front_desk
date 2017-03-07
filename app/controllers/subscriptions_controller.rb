@@ -4,6 +4,9 @@ class SubscriptionsController < ApplicationController
   def new
   end
 
+  def edit
+  end
+
   def create
     begin
       account = current_user.account
