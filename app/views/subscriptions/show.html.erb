@@ -1,11 +1,17 @@
 <h1>Manage Subscription</h1>
 
 <div>
-  <p>You are currently subscribed!</p>
-  <div>
-    <p>Card on file:<p>
-    <p><%= current_account.card_brand %> (**** **** **** <%= current_account.card_last4 %>)</p>
-    <p>Expires: <%= current_account.card_exp_month %>/<%= current_account.card_exp_year %></p>
-  </div>
+  <% if current_account.expires_at? %>
+    <p>Your subscription has been cancelled. Your access expires in <%= distance_of_time_in_words current_account.expires_at - Time.zone.now %>.</p>
+  <% else %>
+    <p>You are currently subscribed!</p>
+    <div>
+      <p>Card on file:<p>
+      <p><%= current_account.card_brand %> (**** **** **** <%= current_account.card_last4 %>)</p>
+      <p>Expires: <%= current_account.card_exp_month %>/<%= current_account.card_exp_year %></p>
+    </div>
+  <% end %>
 </div>
 <%= link_to "Change card", edit_subscription_path %>
+<br>
+<%= link_to "Cancel subscription", subscription_path, method: :delete, data: {confirm: "Are you sure you want to cancel your subscription?"} %>
