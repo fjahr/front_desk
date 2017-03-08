@@ -1,6 +1,7 @@
 class Account < ApplicationRecord
   belongs_to :user
   has_many :members
+  has_many :charges
 
   def stripe_customer
     Stripe::Customer.retrieve(stripe_id)
