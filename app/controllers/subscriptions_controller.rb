@@ -20,7 +20,7 @@ class SubscriptionsController < ApplicationController
         plan: params[:plan],
       )
 
-      account.assign_attributes(stripe_subscription_id: subscription.id)
+      account.assign_attributes(stripe_subscription_id: subscription.id, expires_at: nil)
       account.assign_attributes(
          card_brand: params[:card_brand],
          card_last4: params[:card_last4],
@@ -41,7 +41,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def update
-    # begin
+    begin
       account = current_user.account
       token = params[:stripeToken]
 
@@ -60,14 +60,13 @@ class SubscriptionsController < ApplicationController
 
       flash.notice = "Card was successfully updated."
       redirect_to subscription_path
-    # rescue Stripe::CardError => e
-    #   flash.alert = e.message
-    #   render action: :edit
-    # rescue
-    #   flash.alert = "There was an error with our payment processor. Please try again and contact support if the error persists."
-    #   render action: :edit
-    # end
-
+    rescue Stripe::CardError => e
+      flash.alert = e.message
+      render action: :edit
+    rescue
+      flash.alert = "There was an error with our payment processor. Please try again and contact support if the error persists."
+      render action: :edit
+    end
   end
 
   def destroy

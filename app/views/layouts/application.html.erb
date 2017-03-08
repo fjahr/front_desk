@@ -40,6 +40,9 @@
             </li>
           </ul>
         </div>
+      <% elsif user_signed_in? %>
+        <%= nav_link "Subscription", subscription_path %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "nav-link") %>
       <% else %>
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav ml-auto">
