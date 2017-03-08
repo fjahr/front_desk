@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :members
   resource :dashboard, only: [:show]
 
+  mount StripeEvent::Engine, at: '/webhooks/stripe'
+
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       namespace :alexa do
