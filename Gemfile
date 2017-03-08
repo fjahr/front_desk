@@ -44,6 +44,7 @@ source 'https://rails-assets.org' do
 end
 gem 'sequenced'
 gem 'stripe'
+gem 'stripe_event'
 
 # prelim change to track development of active admin 1.0
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
