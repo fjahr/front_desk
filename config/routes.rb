@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resource :subscription
   resources :members
   resource :dashboard, only: [:show]
-  resources :charges, only: [:index]
+  resources :charges, only: [:index, :show]
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'
 
