@@ -23,7 +23,7 @@ html
             li.nav-item.dropdown
               a#dropdown01.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="http://example.com"  Account
               .dropdown-menu.dropdown-menu-right aria-labelledby="dropdown01" 
-                a.dropdown-item href="#"  #Integrations
+                = link_to "Integrations", integrations_path, class: "dropdown-item"
                 = link_to "Billing", charges_path, class: "dropdown-item"
                 = link_to "Subscription", subscription_path, class: "dropdown-item"
                 = link_to "Settings", edit_user_registration_path, class: "dropdown-item"
