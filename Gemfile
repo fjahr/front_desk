@@ -46,6 +46,7 @@ gem 'sequenced'
 gem 'stripe'
 gem 'stripe_event'
 gem 'receipts'
+gem "slim-rails"
 
 # prelim change to track development of active admin 1.0
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
