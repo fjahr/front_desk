@@ -1,0 +1,254 @@
+#sidebar.stage-shelf.stage-shelf-right.hidden
+  ul.nav.nav-bordered.nav-stacked.flex-column
+    li.nav-header Examples
+    li.nav-item
+      a.nav-link.active href="index.html"  Startup
+    li.nav-item
+      a.nav-link href="minimal/index.html"  Minimal
+    li.nav-item
+      - if user_signed_in?
+        = link_to('Logout', destroy_user_session_path, :method => :delete, class: "nav-link")
+      - else
+        = link_to('Login', new_user_session_path, class: "nav-link")
+#stage.stage
+  .block.block-inverse.block-fill-height.app-header style=("background-image: url(/office.jpg);") 
+    .container.py-4.fixed-top.app-navbar
+      nav.navbar.navbar-transparent.navbar-padded.navbar-toggleable-sm
+        button.navbar-toggler.navbar-toggler-right.hidden-md-up data-distance="-250" data-target="#stage" data-toggle="stage" type="button" 
+          span.navbar-toggler-icon
+        a.navbar-brand.mr-auto href="" 
+          strong style=("background: #fff; padding: 8px 4px 8px 4px; border-radius: 4px;") 
+            img src="/front_desk_logo.svg" /
+        .hidden-sm-down.text-uppercase
+          ul.navbar-nav
+            li.nav-item.px-1
+              a.nav-link href="#"  How it works
+            li.nav-item.px-1
+              a.nav-link href="#"  Pricing
+            li.nav-item.px-1
+            li.nav-item
+              - if user_signed_in?
+                = link_to('My Account', dashboard_path, class: "nav-link")
+              - else
+                = link_to('Login', new_user_session_path, class: "nav-link")
+    .block-xs-middle.pb-5
+      .container
+        .row
+          .mx-auto.d-block
+            img src="/echo_dot.png" /
+        .row
+          .text-center style=("width: 100%") 
+            h1.block-titleData.frequency Meet your first receptionist
+            p.lead.mb-4.text-muted Stop your employees from interupting their focused work and let Alexa handle office visitors.
+            button.btn.btn-primary.btn-lg Get started
+  .block.block-secondary.app-iphone-block
+    .container
+      .row.app-align-center
+        .col-sm-5.hidden-sm-down
+          img.app-iphone src="assets/img/startup-2.jpg" style=("width: 100%;") /
+        .col-md-6.offset-md-1.col-sm-12.offset-sm-0
+          h6.text-muted.text-uppercase Rich Information
+          h3 Make informed decisions with historical &amp; real time data.
+          p.lead.mb-4 We combine immediate real time events with rich historical data to help answer the toughest questions about retention, growth, and engagement.
+          .row.hidden-md-down
+            .col-sm-6.mb-3
+              h5 Data frequency
+              p
+                | We poll for data on a millisecond basis. You can react to new information in seconds rather than days.
+                a.text-primary href="#"  Learn more.
+            .col-sm-6
+              h5 Reliability &amp; uptime
+              p
+                | We process our data across a massively distributed network of reliable servers to ensure 99.99% uptime, always.
+                a.text-primary href="#"  Learn more
+  .block.block-inverse.block-secondary.app-code-block
+    .container
+      .row.app-align-center
+        .col-md-5.push-md-7
+          pre.app-code
+            span 1
+            span goAnalytics
+            | “who are the latest 3 users?”
+            span 2
+            span 3
+            | {
+            span 4
+            | "Dave": {
+            span 5
+            | "fullName": "Dave Gamache",
+            span 6
+            | "twitterHandle": "@dhg",
+            span 7
+            | }
+            span 8
+            | "Mark": {
+            span 9
+            | "fullName": "Mark Otto",
+            span 10
+            | "twitterHandle": "@mdo",
+            span 11
+            | }
+            span 12
+            | "Jacob": {
+            span 13
+            | "fullName": "Jacob Thornton",
+            span 14
+            | "twitterHandle": "@fat",
+            span 15
+            | }
+            span 16
+            | }
+        .col-md-6.pull-md-5
+          h6.text-muted.text-uppercase Easy development
+          h3 Natural language queries make mining data easy for anyone.
+          p.lead.mb-4.text-muted Rather than force everyone at your company to learn incredibly difficult terminal commands, we allow anyone to query the data with natural language to return data.
+          button.btn.btn-secondary.btn-lg.btn-borderless
+            | Read our docs
+  .block.block-inverse.app-high-praise style=("background-image: url(assets/img/startup-3.jpg);") 
+    .container
+      .row.app-align-center.py-3
+        .col-sm-5.push-sm-7.py-5
+          h6.text-muted.text-uppercase.mb-2 High Praise
+          h3.mb-4 “Go Analytics is amazing. Decisions that used to take weeks, now only takes minutes and is available to everyone on my team.”
+          p.mb-4.text-muted Cindy Smith, founder of Cool Startup
+  .block.app-ribbon.py-5
+    .container.text-xs-center
+      img src="assets/img/startup-4.svg" /
+      img src="assets/img/startup-5.svg" /
+      img src="assets/img/startup-6.svg" /
+      img src="assets/img/startup-7.svg" /
+      img src="assets/img/startup-8.svg" /
+  .block.block-secondary.app-block-marketing-grid
+    .container.text-xs-center
+      .row.mb-5
+        .col-xs-10.offset-xs-1.col-sm-8.offset-sm-2.col-lg-6.offset-lg-3
+          h6.text-muted.text-uppercase.mb-2 Inside the machine
+          h3.mb-4 It’s not hard to see how we make your life easier every day.
+      .row.app-marketing-grid
+        .col-md-4.px-4.mb-5
+          img.mb-1 src="assets/img/startup-9.svg" /
+          p
+            strong 24/7 support.
+            | We’re always here for you no matter what time of day.
+        .col-md-4.px-4.mb-5
+          img.mb-1 src="assets/img/startup-10.svg" /
+          p
+            strong E-commerce.
+            | We automatically handle all sales analytics.
+        .col-md-4.px-4.mb-5
+          img.mb-1 src="assets/img/startup-11.svg" /
+          p
+            strong Turnaround.
+            | Our data analysis is distributed, so it processes in seconds.
+      .row.app-marketing-grid
+        .col-md-4.px-4.mb-5
+          img.mb-1 src="assets/img/startup-12.svg" /
+          p
+            strong Rich calculations.
+            | Limitless ways to splice and dice your data.
+        .col-md-4.px-4.mb-5
+          img.mb-1 src="assets/img/startup-13.svg" /
+          p
+            strong Mobile apps.
+            | iOS and Android apps available for monitoring.
+        .col-md-4.px-4.mb-5
+          img.mb-1 src="assets/img/startup-14.svg" /
+          p
+            strong Secure connections.
+            | Every single request is routed through HTTPS.
+  .block.app-price-plans
+    .container.text-center
+      .row.mb-5
+        .col-md-8.offset-md-2.col-lg-6.offset-lg-3
+          h6.text-muted.text-uppercase.mb-2 Business Talk
+          h3 No plans. We just bump your plan whenever you need it.
+      .row
+        .col-md-4.px-4.pb-2.mb-5
+          .px-2.mb-2
+            h6.text-muted.text-uppercase.mb-4 Personal
+            img.mb-4 src="assets/img/startup-15.svg" /
+            p.pb-2 Plenty of processing power for any personal projects, big or small.
+          ul.list-unstyled.list-bordered.text-xs-left.my-4
+            li.py-4
+              strong 10k
+              | monthly requests
+            li.py-4
+              strong 9am-5pm
+              | technical supprt
+            li.py-4
+              strong Public
+              | API access
+          button.btn.btn-lg.btn-primary.btn-block
+            | Start
+            span.hidden-lg-down a personal account
+        .col-md-4.px-4.pb-2.mb-5
+          .px-2
+            h6.text-muted.text-uppercase.mb-4 Business
+            img.mb-4 src="assets/img/startup-16.svg" /
+            p.pb-2 The perfect sized plan for small businesses to get started.
+          ul.list-unstyled.list-bordered.text-xs-left.my-4
+            li.py-4
+              strong 100k
+              | monthly requests
+            li.py-4
+              strong 24/7
+              | technical supprt
+            li.py-4
+              strong Public
+              | API access
+          button.btn.btn-lg.btn-primary.btn-block
+            | Start
+            span.hidden-lg-down a business account
+        .col-md-4.px-4.pb-1.mb-5
+          .px-2
+            h6.text-muted.text-uppercase.mb-4 Corporate
+            img.mb-4 src="assets/img/startup-17.svg" /
+            p.pb-2 An unlimited plan that will scale infinitely to any size project.
+          ul.list-unstyled.list-bordered.text-xs-left.my-4
+            li.py-4
+              strong Unlimited
+              | monthly requests
+            li.py-4
+              strong 24/7
+              | technical supprt
+            li.py-4
+              strong Public &amp; Private
+              | API access
+          button.btn.btn-lg.btn-primary.btn-block
+            | Start
+            span.hidden-lg-down a corporate account
+  .block.block-inverse.app-footer
+    .container
+      .row
+        .col-md-5.mb-5
+          ul.list-unstyled.list-spaced
+            li.mb-2
+              h6.text-uppercase About
+            li.text-muted
+              | We’ve been working on Go Analytics for the better part of a decade and are super proud of what we’ve created. If you’d like to learn more, or are interested in a job, contact us anytime at
+              a href=("mailto: themes@getbootstrap.com")  themes@getbootstrap.com
+        .col-md-2.offset-md-1.mb-5
+          ul.list-unstyled.list-spaced
+            li.mb-2
+              h6.text-uppercase Product
+            li.text-muted Features
+            li.text-muted Examples
+            li.text-muted Tour
+            li.text-muted Gallery
+        .col-md-2.mb-5
+          ul.list-unstyled.list-spaced
+            li.mb-2
+              h6.text-uppercase Apis
+            li.text-muted Rich data
+            li.text-muted Simple data
+            li.text-muted Real time
+            li.text-muted Social
+        .col-md-2.mb-5
+          ul.list-unstyled.list-spaced
+            li.mb-2
+              h6.text-uppercase Legal
+            li.text-muted Terms
+            li.text-muted Legal
+            li.text-muted Privacy
+            li.text-muted License
+

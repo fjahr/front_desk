@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   }
   use_doorkeeper
 
-  resource :account
   resource :subscription
   resources :members
   resource :dashboard, only: [:show]

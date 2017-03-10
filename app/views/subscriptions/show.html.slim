@@ -1,0 +1,18 @@
+h1 Manage Subscription
+div
+  - if current_account.expires_at?
+    p
+      | Your subscription has been cancelled. Your access expires in #{distance_of_time_in_words current_account.expires_at - Time.zone.now}.
+  - else
+    p You are currently subscribed!
+    div
+      p Card on file:
+      p
+        = current_account.card_brand
+        | (**** **** **** #{current_account.card_last4})
+      p
+        | Expires: #{current_account.card_exp_month}/#{current_account.card_exp_year}
+= link_to "Change card", edit_subscription_path
+br
+= link_to "Cancel subscription", subscription_path, method: :delete, data: {confirm: "Are you sure you want to cancel your subscription?"}
+
