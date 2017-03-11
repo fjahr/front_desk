@@ -6,12 +6,26 @@ class Alexa::Response
   def build
     resp = AlexaRubykit::Response.new
 
-    case intent_name
+    case intent_type
     when "LAUNCH_REQUEST"
-                # user talked to our skill but did not say something matching intent
-          #       message = "Say something see what happens."
-    when "NotifyArrival"
-      resp.add_speech('Implement me')
+      resp.add_speech('Up to date.')
+    when "IntentRequest"
+      case intent_name
+      when "NotifyArrival"
+        visitor_name = slots["VisitorName"]["value"]
+        member_name = slots["MemberName"]["value"]
+
+        member = Member.find_by(name: member_name)
+
+        if member.present?
+          notifier = Webhooks::Slack::Notification.new("https://hooks.slack.com/services/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")
+          notifier.send(member_name, visitor_name)
+
+          resp.add_speech("Thanks #{visitor_name}. I notified #{member.name} of your arrival.")
+        else
+          resp.add_speech("Sorry #{visitor_name}. I could not find a member named #{member_name}. Please try a different name.")
+        end
+      end
     when "AMAZON.HelpIntent"
       resp.add_speech(
         "Let me know who you are and who you are looking to meet. If you don't know who you want to meet, just say anyone."
@@ -33,6 +47,22 @@ class Alexa::Response
       @request["intent"]["name"]
     rescue
       raise InvalidRequestError, "No intent or intent name found in request"
+    end
+  end
+
+  def intent_type
+    begin
+      @request["type"]
+    rescue
+      raise InvalidRequestError, "No intent or intent type found in request"
+    end
+  end
+
+  def slots
+    begin
+      @request["intent"]["slots"]
+    rescue
+      raise InvalidRequestError, "No intent or intent slots found in request"
     end
   end
 end
