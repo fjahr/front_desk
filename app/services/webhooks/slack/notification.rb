@@ -9,4 +9,8 @@ class Webhooks::Slack::Notification
   def send(member, visitor_name)
     @notifier.ping "You have a visitor. #{visitor_name} is waiting for you at the entrance.", channel: "@#{member}"
   end
+
+  def send_linking_success(channel)
+    @notifier.ping "Success", channel: channel
+  end
 end

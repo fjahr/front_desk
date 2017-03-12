@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :integrations, only: [:index]
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'
+  get '/webhooks/slack/oauth_callback', to: 'slack#oauth_callback'
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do

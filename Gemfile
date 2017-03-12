@@ -47,7 +47,8 @@ gem 'stripe'
 gem 'stripe_event'
 gem 'receipts'
 gem "slim-rails"
-gem "slack-notifier"
+gem 'slack-notifier', '~> 2.1'
+gem 'httparty'
 
 # prelim change to track development of active admin 1.0
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
