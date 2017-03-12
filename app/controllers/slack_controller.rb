@@ -5,12 +5,7 @@ class SlackController < ApplicationController
     client = "146802301377.152576575970"
     # regenerate an put into env variables before production
     secret = "492419298a0e1bebc96af06b7aac8497"
-    puts "making request now"
     response = ::HTTParty.get("https://slack.com/api/oauth.access?client_id=#{client}&client_secret=#{secret}&code=#{code}&redirect_uri=https://cb22737a.ngrok.io/webhooks/slack/oauth_callback")
-
-    puts "*"*30
-    puts response
-    puts "*"*30
 
     webhook_url = response["incoming_webhook"]["url"]
     channel = response["incoming_webhook"]["channel"]

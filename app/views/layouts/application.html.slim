@@ -17,12 +17,11 @@ html
           ul.navbar-nav.mr-auto
             = nav_link "Dashboard", dashboard_path
             = nav_link "Members", members_path
-            li.nav-item
-              a.nav-link href="#"  #Visitors
+            = nav_link "Visits", visits_path
           ul.navbar-nav.ml-auto
             li.nav-item.dropdown
               a#dropdown01.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="http://example.com"  Account
-              .dropdown-menu.dropdown-menu-right aria-labelledby="dropdown01" 
+              .dropdown-menu.dropdown-menu-right aria-labelledby="dropdown01"
                 = link_to "Integrations", integrations_path, class: "dropdown-item"
                 = link_to "Billing", charges_path, class: "dropdown-item"
                 = link_to "Subscription", subscription_path, class: "dropdown-item"

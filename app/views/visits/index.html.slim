@@ -1,0 +1,16 @@
+h1 Visits
+
+table
+  thead
+    tr
+      th Date
+      th Visitor Name
+      th Member Name
+      th Match
+  tbody
+    - @visits.each do |visit|
+      tr
+        td= visit.created_at.to_date
+        td= visit.visitor_name
+        td= visit.member_name
+        td= visit.member.name
