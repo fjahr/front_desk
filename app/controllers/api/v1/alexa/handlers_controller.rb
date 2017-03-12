@@ -1,16 +1,16 @@
 class Api::V1::Alexa::HandlersController < ActionController::Base
   prepend_before_action :set_access_token_in_params
-  # deactivated for testing
   # before_action :doorkeeper_authorize!
   respond_to :json
 
   def create
-    # deactivated for testing
     # user = current_doorkeeper_user
     # render status: 401 unless user
 
     render status: 400 unless params["request"]
-    resp = ::Alexa::Response.new(params["request"])
+    # resp = ::Alexa::Response.new(user.account, params["request"])
+    # auth hardcoded for testing with the alexa test env
+    resp = ::Alexa::Response.new(Account.last, params["request"])
 
     render json: resp.build
   end

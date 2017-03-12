@@ -1,6 +1,7 @@
 class Alexa::Response
-  def initialize(request)
+  def initialize(account, request)
     @request = request
+    @account = account
   end
 
   def build
@@ -15,7 +16,9 @@ class Alexa::Response
         visitor_name = slots["VisitorName"]["value"]
         member_name = slots["MemberName"]["value"]
 
-        member = Member.find_by(name: member_name)
+        member = @account.members.find_by(name: member_name)
+
+        Visit.create(account: @account, member_name: member_name, visitor_name: visitor_name, member: member)
 
         if member.present?
           notifier = Webhooks::Slack::Notification.new("https://hooks.slack.com/services/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")
