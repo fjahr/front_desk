@@ -17,8 +17,10 @@ class Alexa::Response
         member_name = slots["MemberName"]["value"]
 
         member = @account.members.find_by(name: member_name)
-
-        Visit.create(account: @account, member_name: member_name, visitor_name: visitor_name, member: member)
+        unless member.present?
+          found_alias = @account.aliases.find_by(name: member_name)
+          member = found_alias.member if found_alias.present?
+        end
 
         if member.present?
           notifier = Webhooks::Slack::Notification.new("https://hooks.slack.com/services/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")
@@ -28,6 +30,8 @@ class Alexa::Response
         else
           resp.add_speech("Sorry #{visitor_name}. I could not find a member named #{member_name}. Please try a different name.")
         end
+
+        Visit.create(account: @account, member_name: member_name, visitor_name: visitor_name, member: member)
       end
     when "AMAZON.HelpIntent"
       resp.add_speech(
