@@ -10,7 +10,7 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
     render status: 400 unless params["request"]
     # resp = ::Alexa::Response.new(user.account, params["request"])
     # auth hardcoded for testing with the alexa test env
-    resp = ::Alexa::Response.new(Account.last, params["request"])
+    resp = ::Alexa::Response.new(Account.last, params)
 
     render json: resp.build
   end
