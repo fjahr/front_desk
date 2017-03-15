@@ -42,6 +42,7 @@ class Alexa::Response
 
             resp.add_speech("Thanks #{@visit.visitor_name}. I notified #{member.name} of your arrival.")
             @visit.update(state: Visit.states.end)
+            session_end = true
           elsif intent_name == "AMAZON.NoIntent"
             # not triggered properly atm
             resp.add_speech("Ok, let's try again: who would you like to see?")
@@ -49,7 +50,7 @@ class Alexa::Response
             @visit.update(state: Visit.states.visitor_name_given)
           else
             resp.add_speech("I am sorry, something went wrong. Please start again.")
-            session_end = false
+            session_end = true
           end
         end
       else
