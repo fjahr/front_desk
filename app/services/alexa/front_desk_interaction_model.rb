@@ -33,8 +33,8 @@ class Alexa::FrontDeskInteractionModel
         intent.add_utterance_template('{John Doe|Name}')
       end
 
-      model.add_intent(:"AMAZON.YesIntent") do |intent|
-      end
+      model.add_intent(:"AMAZON.YesIntent")
+      model.add_intent(:"AMAZON.NoIntent")
 
       model.add_intent(:"AMAZON.HelpIntent") do |intent|
         intent.add_utterance_template('help')

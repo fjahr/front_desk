@@ -18,7 +18,9 @@ class Alexa::Response
         case @visit.state
         when Visit.states.start
           visitor_name = slots["Name"]["value"]
+
           @visit.update(state: Visit.states.visitor_name_given, visitor_name: visitor_name)
+
           resp.add_speech("Who would you like to see?")
         when Visit.states.visitor_name_given
           member_name = slots["Name"]["value"]
@@ -26,7 +28,7 @@ class Alexa::Response
           member = find_member(member_name)
 
           if member.present?
-            resp.add_speech("Is #{member.name} the right person?")
+            resp.add_speech("You would like to see #{member.name}. Is that correct?")
             @visit.update(state: Visit.states.member_name_given, member_name: member_name, member: member)
           else
             resp.add_speech("Sorry. I could not find anyone named #{member_name}. Can you say it again, please?")
@@ -40,10 +42,14 @@ class Alexa::Response
 
             resp.add_speech("Thanks #{@visit.visitor_name}. I notified #{member.name} of your arrival.")
             @visit.update(state: Visit.states.end)
-          elsif intent_name == "AMAZON.YesIntent"
+          elsif intent_name == "AMAZON.NoIntent"
+            # not triggered properly atm
+            resp.add_speech("Ok, let's try again: who would you like to see?")
 
+            @visit.update(state: Visit.states.visitor_name_given)
           else
-
+            resp.add_speech("I am sorry, something went wrong. Please start again.")
+            session_end = false
           end
         end
       else
