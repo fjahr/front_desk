@@ -19,16 +19,24 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe MembersController, type: :controller do
+  # login_user
+  let(:user) { FactoryGirl.create(:user) }
+  let!(:account) { FactoryGirl.create(:account, :subscribed, user: user) }
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      sign_in user
+    end
+
 
   # This should return the minimal set of attributes required to create a valid
   # Member. As you add validations to Member, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {sequential_id: 1, account_id: account.id}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -39,6 +47,7 @@ RSpec.describe MembersController, type: :controller do
   describe "GET #index" do
     it "assigns all members as @members" do
       member = Member.create! valid_attributes
+      require 'pry'; binding.pry
       get :index, params: {}, session: valid_session
       expect(assigns(:members)).to eq([member])
     end
@@ -103,14 +112,14 @@ RSpec.describe MembersController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: "Erlich"}
       }
 
       it "updates the requested member" do
         member = Member.create! valid_attributes
         put :update, params: {id: member.to_param, member: new_attributes}, session: valid_session
         member.reload
-        skip("Add assertions for updated state")
+        expect(member.name).to eq("Erlich")
       end
 
       it "assigns the requested member as @member" do
@@ -155,5 +164,4 @@ RSpec.describe MembersController, type: :controller do
       expect(response).to redirect_to(members_url)
     end
   end
-
 end
