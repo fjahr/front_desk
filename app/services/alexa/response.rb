@@ -1,5 +1,7 @@
 class Alexa::Response
   def initialize(account, params)
+    raise InvalidRequestError unless params["request"].present? && params["session"].present?
+
     @request = params["request"]
     @account = account
     @visit = Visit.find_or_initialize_by(account: @account, alexa_session: params["session"]["sessionId"])
@@ -67,7 +69,7 @@ class Alexa::Response
 
             resp.add_speech("Thanks #{visitor_name}. I notified #{member.name} of your arrival.")
           else
-            resp.add_speech("Sorry #{visitor_name}. I could not find a member named #{member_name}. Please try a different name.")
+            resp.add_speech("Sorry, #{visitor_name}. I could not find a member named #{member_name}. Please try a different name.")
           end
 
           session_end = true

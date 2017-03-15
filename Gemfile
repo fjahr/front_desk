@@ -49,6 +49,7 @@ gem 'receipts'
 gem "slim-rails"
 gem 'slack-notifier', '~> 2.1'
 gem 'httparty'
+gem 'rails-controller-testing'
 
 # prelim change to track development of active admin 1.0
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'

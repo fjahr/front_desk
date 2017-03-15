@@ -17,17 +17,11 @@ RSpec.describe "members/new", type: :view do
 
     assert_select "form[action=?][method=?]", members_path, "post" do
 
-      assert_select "input#member_account_id[name=?]", "member[account_id]"
-
       assert_select "input#member_name[name=?]", "member[name]"
 
       assert_select "input#member_email[name=?]", "member[email]"
 
-      assert_select "input#member_phone[name=?]", "member[phone]"
-
       assert_select "input#member_slack_id[name=?]", "member[slack_id]"
-
-      assert_select "input#member_hipchat_id[name=?]", "member[hipchat_id]"
     end
   end
 end
