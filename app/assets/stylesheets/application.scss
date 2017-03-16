@@ -18,11 +18,8 @@
 
 body {
   padding-top: 65px;
-  background-color: #f7f7f9;
 }
 
-nav.navbar {
-  border-bottom-style: solid;
-  border-bottom-color: #0068A8;
-  border-bottom-width: 2px;
+nav.navbar.navbar-inverse {
+  background-color: #0068A8;
 }

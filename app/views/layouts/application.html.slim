@@ -8,7 +8,7 @@ html
     = javascript_include_tag 'application', 'https://js.stripe.com/v3/', 'data-turbolinks-track': 'reload'
     = tag :meta, name: "stripe-public-key", content: Rails.application.secrets.stripe_public_key
   body
-    nav.navbar.navbar-toggleable-md.navbar-light.fixed-top style=("background-color: white;") 
+    nav.navbar.navbar-toggleable-md.navbar-inverse.fixed-top
       button.navbar-toggler.navbar-toggler-right aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarsExampleDefault" data-toggle="collapse" type="button" 
         span.navbar-toggler-icon
       - if user_signed_in? && current_account.subscribed?
