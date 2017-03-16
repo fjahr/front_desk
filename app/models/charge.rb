@@ -2,6 +2,14 @@ class Charge < ApplicationRecord
   belongs_to :account
   validates :stripe_id, uniqueness: true
 
+  validates :stripe_id, presence: true
+  validates :account, presence: true
+  validates :amount, presence: true
+  validates :card_brand, presence: true
+  validates :card_last4, presence: true
+  validates :card_exp_month, presence: true
+  validates :card_exp_year, presence: true
+
   def receipt
     Receipts::Receipt.new(
       id: stripe_id,

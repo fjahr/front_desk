@@ -4,7 +4,7 @@ RSpec.describe Alias, type: :model do
   let(:member) { FactoryGirl.create(:member) }
   let(:attr) { {member_id: member.id, name: "John Doe"} }
 
-  subject { Alias.new(attr) }
+  subject { described_class.new(attr) }
 
   describe "with a name and a member association" do
     it "should be valid" do
