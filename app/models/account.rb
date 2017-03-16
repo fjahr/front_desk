@@ -5,6 +5,8 @@ class Account < ApplicationRecord
   has_many :visits
   has_many :aliases, through: :members
 
+  validates :user, presence: true
+
   def stripe_customer
     Stripe::Customer.retrieve(stripe_id)
   end
