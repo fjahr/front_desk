@@ -7,6 +7,7 @@ class Member < ApplicationRecord
   accepts_nested_attributes_for :aliases
 
   validates_associated :aliases
+  validates :name, presence: true
 
   def to_param
     self.sequential_id.to_s

@@ -1,4 +1,4 @@
-class MembersController < InheritedResources::Base
+class MembersController < ApplicationController
   def new
     @member = Member.new
     @member.aliases.build
@@ -30,6 +30,22 @@ class MembersController < InheritedResources::Base
     end
   end
 
+  def destroy
+    current_user.account.members.find_by(sequential_id: params[:id]).delete
+
+    redirect_to members_path
+  end
+
+  def update
+    @member = current_user.account.members.find_by(sequential_id: params[:id])
+
+    if @member.update_attributes(member_params)
+      redirect_to @member
+    else
+      render :edit
+    end
+  end
+
   private
 
     def member_params
@@ -37,7 +53,11 @@ class MembersController < InheritedResources::Base
     end
 
     def nested_alias_names
-      params["member"]["aliases_attributes"]["0"]["name"].split(",")
+      if params["member"]["aliases_attributes"].present?
+        params["member"]["aliases_attributes"]["0"]["name"].split(",")
+      else
+        []
+      end
     end
 end
 

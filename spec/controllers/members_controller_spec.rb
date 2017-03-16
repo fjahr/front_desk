@@ -32,11 +32,11 @@ RSpec.describe MembersController, type: :controller do
   # Member. As you add validations to Member, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {sequential_id: 1, account_id: account.id}
+    {name: "Peter Gregory", sequential_id: 1, account_id: account.id}
   }
 
   let(:invalid_attributes) {
-    {}
+    {name: ""}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -47,7 +47,6 @@ RSpec.describe MembersController, type: :controller do
   describe "GET #index" do
     it "assigns all members as @members" do
       member = Member.create! valid_attributes
-      require 'pry'; binding.pry
       get :index, params: {}, session: valid_session
       expect(assigns(:members)).to eq([member])
     end
@@ -77,7 +76,11 @@ RSpec.describe MembersController, type: :controller do
   end
 
   describe "POST #create" do
-    context "with valid params" do
+    context "with valid params with aliases" do
+      let(:valid_attributes) {
+        {name: "Peter", sequential_id: 1, account_id: account.id, aliases_attributes: {"0" => { name: "foo, bar" }}}
+      }
+
       it "creates a new Member" do
         expect {
           post :create, params: {member: valid_attributes}, session: valid_session
