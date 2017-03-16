@@ -8,6 +8,8 @@ class Member < ApplicationRecord
 
   validates_associated :aliases
   validates :name, presence: true
+  validates :account, presence: true
+  validates :sequential_id, presence: true
 
   def to_param
     self.sequential_id.to_s

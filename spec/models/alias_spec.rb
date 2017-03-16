@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Alias, type: :model do
-  let(:member) { FactoryGirl.create(:member) }
-  let(:attr) { {member_id: member.id, name: "John Doe"} }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:account) { FactoryGirl.create(:account, user: user) }
+  let(:member) { FactoryGirl.create(:member, account: account) }
+  let(:attr) { {member: member, name: "John Doe"} }
 
   subject { described_class.new(attr) }
 

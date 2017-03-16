@@ -30,7 +30,7 @@ RSpec.describe Charge, type: :model do
   end
 
   ["account", "amount", "stripe_id", "card_brand", "card_last4", "card_exp_month", "card_exp_year"].each do |val|
-    describe "charge missing an #{val}" do
+    describe "without #{val}" do
       let(:"#{val}") { nil }
 
       it "should not be valid" do
