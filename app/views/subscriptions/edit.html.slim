@@ -1,11 +1,16 @@
-h1 Update Card
-= form_tag subscription_path, method: :put, id: "payment-form" do
-  .form-row
-    #card-errors
-    label for="card-element" 
-      | Credit or debit card
-    #card-element
-  button Submit Payment
+.page-header
+  h1 Update Card
+.page-content
+  .card.w-50.cc-card
+    .card-block
+      = form_tag subscription_path, method: :put, id: "payment-form" do
+        .form-row
+          #card-errors
+          label for="card-element"
+            | New credit card
+          #card-element
+        .form-row.text-right
+          button.btn.btn-primary Submit
 
 javascript:
   // Create a Stripe client
