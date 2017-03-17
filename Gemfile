@@ -78,4 +78,5 @@ group :development do
 
   gem 'pry-rails'
   gem 'rubocop', require: false
+  gem 'fuubar'
 end
