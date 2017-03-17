@@ -1,15 +1,43 @@
-h1 Integrations
+.page-header
+  h1 Integrations
 
-br
+.page-content
+  .row.card-row
+    .col-sm-6
+      .card
+        .card-block
+          h4.card-title
+            | Slack
+            - if current_account.slack_webhook.present?
+              .badge.badge-success.float-right Active
+          p.card-text Receive the your Front Desk notifications through the Slackbot.
+          - if current_account.slack_webhook.present?
+            a.btn.btn-danger href="#" Remove Slack
+          - else
+            a href="https://slack.com/oauth/authorize?scope=incoming-webhook&client_id=146802301377.152576575970&redirect_uri=https://cb22737a.ngrok.io/webhooks/slack/oauth_callback"
+              img alt="Add Slack" height="40" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x), https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" width="139"
 
-h2 Slack
-- if current_account.slack_webhook.present?
-  p Slack is set up
-- else
-  a href="https://slack.com/oauth/authorize?scope=incoming-webhook&client_id=146802301377.152576575970&redirect_uri=https://cb22737a.ngrok.io/webhooks/slack/oauth_callback"
-    img alt="Add to Slack" height="40" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x), https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" width="139"
+    .col-sm-6
+      .card
+        .card-block
+          h4.card-title
+            | Hipchat
+            .badge.badge-warning.float-right Coming soon
+          p.card-text Receive the your Front Desk notifications in Hipchat.
 
-br
-br
+  .row.card-row
+    .col-sm-6
+      .card
+        .card-block
+          h4.card-title
+            | Email
+            .badge.badge-warning.float-right Coming soon
+          p.card-text Receive the your Front Desk notifications by email.
 
-h2 Email
+    .col-sm-6
+      .card
+        .card-block
+          h4.card-title
+            | Phone
+            .badge.badge-warning.float-right Coming soon
+          p.card-text Receive the your Front Desk notifications by SMS.
