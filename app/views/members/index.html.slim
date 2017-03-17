@@ -1,8 +1,12 @@
 .page-header
-  h1 Members
+  .row
+    .col
+      h1 Members
+    .col
+      .horizontal-buttons.text-right
+        = link_to 'Add Member', new_member_path, class: "btn btn-secondary"
 
 .page-content
-  = link_to 'Add Member', new_member_path
   table.table.table-bordered.table-striped
     thead
       tr
@@ -10,7 +14,7 @@
         th Email
         th Phone
         th Slack
-        th
+        th Actions
     tbody
       - @members.each do |member|
         tr
