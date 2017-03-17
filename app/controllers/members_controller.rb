@@ -15,7 +15,7 @@ class MembersController < ApplicationController
   end
 
   def index
-    @members = current_user.account.members.all
+    @members = current_user.account.members.all.page params[:page]
   end
 
   def create

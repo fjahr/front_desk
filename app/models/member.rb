@@ -11,6 +11,8 @@ class Member < ApplicationRecord
   validates :account, presence: true
   validates :sequential_id, presence: true
 
+  paginates_per 10
+
   def to_param
     self.sequential_id.to_s
   end
