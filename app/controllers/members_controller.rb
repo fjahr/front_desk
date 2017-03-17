@@ -1,4 +1,6 @@
 class MembersController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @member = Member.new
     @member.aliases.build
@@ -31,7 +33,7 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    current_user.account.members.find_by(sequential_id: params[:id]).delete
+    current_user.account.members.find_by(sequential_id: params[:id]).destroy
 
     redirect_to members_path
   end

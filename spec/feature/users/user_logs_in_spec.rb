@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User logs in", type: :feature do
   before :each do
-    user = FactoryGirl.create(:user, encrypted_password: Devise::Encryptor.digest(User, "f4k3p455w0rd"))
+    user = FactoryGirl.create(:user)
     FactoryGirl.create(:account, :subscribed, user: user)
   end
 

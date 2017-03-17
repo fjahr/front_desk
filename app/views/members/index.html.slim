@@ -1,0 +1,26 @@
+.page-header
+  h1 Members
+
+.page-content
+  = link_to 'Add Member', new_member_path
+  table.table.table-bordered.table-striped
+    thead
+      tr
+        th Name
+        th Email
+        th Phone
+        th Slack
+        th
+    tbody
+      - @members.each do |member|
+        tr
+          td= member.name
+          td= member.email
+          td= member.phone
+          td= member.slack_id
+          td
+            = link_to 'Show', member
+            |  | 
+            = link_to 'Edit', edit_member_path(member)
+            |  | 
+            = link_to 'Destroy', member, method: :delete, data: {confirm: 'Are you sure?'}
