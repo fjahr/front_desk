@@ -42,7 +42,39 @@ RSpec.describe MemberFinder do
       end
     end
 
+    describe "and with aliases in db" do
+      let!(:alias) { FactoryGirl.create(:alias, member: member, name: alias_name) }
 
+      context "where alias name is exact match" do
+        let(:member_name) { "Erhard" }
+        let(:given_name) { "erlich" }
+        let(:alias_name) { "erlich" }
+
+        it "should be found" do
+          expect(subject).to eq(member)
+        end
+      end
+
+      context "where alias name is case insensitive match" do
+        let(:member_name) { "Erhard" }
+        let(:given_name) { "Erlich" }
+        let(:alias_name) { "erlich" }
+
+        it "should be found" do
+          expect(subject).to eq(member)
+        end
+      end
+
+      context "where given name is case insensitive match" do
+        let(:member_name) { "Erhard" }
+        let(:given_name) { "erlich" }
+        let(:alias_name) { "Erlich" }
+
+        it "should be found" do
+          expect(subject).to eq(member)
+        end
+      end
+   end
   end
 end
 
