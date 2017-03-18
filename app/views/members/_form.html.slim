@@ -7,18 +7,20 @@
       ul
         - member.errors.full_messages.each do |message|
           li= message
-  .field
+  .form-group
     = f.label :name
-    = f.text_field :name
-  .field
+    = f.text_field :name, class: "form-control"
+  .form-group
     = f.label :email
-    = f.text_field :email
-  .field
+    = f.text_field :email, class: "form-control"
+  .form-group
     = f.label :slack_id
-    = f.text_field :slack_id
+    .input-group
+      .input-group-addon @
+      = f.text_field :slack_id, class: "form-control"
   = f.fields_for :aliases do |a|
-    .field
+    .form-group
       = a.label :aliases_split_by_comma
-      = a.text_field :name
-  .actions
-    = f.submit
+      = a.text_field :name, class: "form-control"
+  .horizontal-buttons.text-right
+    = f.submit "Save", class: "btn btn-primary"

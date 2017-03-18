@@ -1,26 +1,25 @@
-p#notice= notice
-p
-  strong Account:
-  = @member.account
-p
-  strong Name:
-  = @member.name
-p
-  strong Email:
-  = @member.email
-p
-  strong Phone:
-  = @member.phone
-p
-  strong Slack:
-  = @member.slack_id
-p
-  strong Hipchat:
-  = @member.hipchat_id
+.page-header
+  .row
+    .col
+      h1= @member.name
+    .col
+      .horizontal-buttons.text-right
+        = link_to 'Edit', edit_member_path(@member), class: "btn btn-secondary"
 
-= link_to 'Edit', edit_member_path(@member)
-= link_to 'Back', members_path
+.page-content
+  p
+    strong Email:
+    = @member.email
+  p
+    strong Phone:
+    = @member.phone
+  p
+    strong Slack:
+    = @member.slack_id
+  p
+    strong Hipchat:
+    = @member.hipchat_id
 
-ul
-  - @member.aliases.each do |al|
-    li= al.name
+  ul
+    - @member.aliases.each do |al|
+      li= al.name
