@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe MemberFinder do
-  let(:user) {FactoryGirl.create(:user) }
-  let(:account) { FactoryGirl.create(:account, user: user) }
+  let(:account) { FactoryGirl.create(:account) }
   let(:given_name) { "erlich" }
 
   subject { described_class.find(account, given_name) }
@@ -44,8 +43,7 @@ RSpec.describe MemberFinder do
     end
 
     context "member is in another account" do
-      let(:foreign_user) {FactoryGirl.create(:user) }
-      let(:foreign_account) { FactoryGirl.create(:account, user: foreign_user) }
+      let(:foreign_account) { FactoryGirl.create(:account) }
       let!(:foreign_member) { FactoryGirl.create(:member, account: foreign_account, name: "foreigner") }
 
       let(:member_name) { "Erlich" }
