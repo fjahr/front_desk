@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe MemberFinder do
-  let(:account) { FactoryGirl.create(:account) }
+  let(:user) {FactoryGirl.create(:user) }
+  let(:account) { FactoryGirl.create(:account, user: user) }
   let(:given_name) { "erlich" }
 
-  subject { described_class.find(given_name) }
+  subject { described_class.find(account, given_name) }
 
   describe "with no member in db" do
     it "should be nil" do
@@ -39,6 +40,19 @@ RSpec.describe MemberFinder do
 
       it "should be found" do
         expect(subject).to eq(member)
+      end
+    end
+
+    context "member is in another account" do
+      let(:foreign_user) {FactoryGirl.create(:user) }
+      let(:foreign_account) { FactoryGirl.create(:account, user: foreign_user) }
+      let!(:foreign_member) { FactoryGirl.create(:member, account: foreign_account, name: "foreigner") }
+
+      let(:member_name) { "Erlich" }
+      let(:given_name) { "foreigner" }
+
+      it "should not be found" do
+        expect(subject).to eq(nil)
       end
     end
 
@@ -78,7 +92,6 @@ RSpec.describe MemberFinder do
       context "member name and alias name are same" do
         let(:member_name) { "erlich" }
         let(:given_name) { "erlich" }
-
 
         let!(:member2) { FactoryGirl.create(:member, name: "not erlich", account: account) }
         let!(:alias) { FactoryGirl.create(:alias, member: member2, name: alias_name) }

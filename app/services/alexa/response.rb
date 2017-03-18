@@ -27,7 +27,7 @@ class Alexa::Response
         when Visit.states.visitor_name_given
           member_name = slots["Name"]["value"]
 
-          member = find_member(member_name)
+          member = MemberFinder.find(@account, member_name)
 
           if member.present?
             resp.add_speech("You would like to see #{member.name}. Is that correct?")
@@ -61,7 +61,7 @@ class Alexa::Response
           visitor_name = slots["VisitorName"]["value"]
           member_name = slots["MemberName"]["value"]
 
-          member = find_member(member_name)
+          member = MemberFinder.find(@account, member_name)
 
           if member.present?
             notifier = Webhooks::Slack::Notification.new("https://hooks.slack.com/services/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")
@@ -90,15 +90,6 @@ class Alexa::Response
   end
 
   private
-
-  def find_member(member_name)
-    member = @account.members.find_by(name: member_name)
-    unless member.present?
-      found_alias = @account.aliases.find_by(name: member_name)
-      member = found_alias.member if found_alias.present?
-    end
-    member
-  end
 
   def intent_name
     begin
