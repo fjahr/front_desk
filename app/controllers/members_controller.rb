@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_subscription!
 
   def new
     @member = Member.new

@@ -26,6 +26,14 @@ class Account < ApplicationRecord
   def subscribed?
     stripe_subscription_id? || (expires_at? && Time.zone.now < expires_at)
   end
+
+  def never_subscribed?
+    !stripe_subscription_id?
+  end
+
+  def expired?
+    expires_at? && Time.zone.now > expires_at
+  end
 end
 
 class MissingTokenError < StandardError; end

@@ -1,27 +1,40 @@
-h1 Subscribe
 - if current_account.card_last4.present?
-  = form_tag subscription_path, id: "existing-card" do
-    p Pay with existing card:
-    div
-      p Card on file:
-      p
-      p
-        = current_account.card_brand
-        | (**** **** **** #{current_account.card_last4})
-      p
-        | Expires: #{current_account.card_exp_month}/#{current_account.card_exp_year}
-      = hidden_field_tag :plan, current_plan
-    button.btn.btn-primary type="button"  Submit
-    p
-      | or #{link_to "add a new card", "#", class: "show-card-form"}.
-= form_tag subscription_path, id: "payment-form", style: (current_account.card_last4.present? ? "display:none" : nil) do
-  .form-row
-    #card-errors
-    label for="card-element" 
-      | Credit or debit card
-    #card-element
-    = hidden_field_tag :plan, current_plan
-  button.btn.btn-primary type="button"  Submit
+  #old-payment
+    .page-header
+      .row
+        .col
+          h1 Use card on file
+        .col
+          .horizontal-buttons.text-right
+            = link_to 'Add new card', "#", class: "show-card-form btn btn-secondary"
+
+    .page-content
+      .card.w-50.cc-card
+        .card-block
+          = form_tag subscription_path, id: "existing-card" do
+            h3.card-title= current_account.card_brand
+            p.card-text= "**** **** **** #{current_account.card_last4}"
+            p.card-text= "Expires: #{current_account.card_exp_month}/#{current_account.card_exp_year}"
+            = hidden_field_tag :plan, current_plan
+
+      .horizontal-buttons.text-right
+        input.submit.btn.btn-primary type="submit" value=("Submit Payment")
+
+#new-payment{style= "#{(current_account.card_last4.present? ? "display:none" : nil)}"}
+  .page-header
+    h1 Use new card
+  .page-content
+    .card.w-50.cc-card
+      .card-block
+        = form_tag subscription_path, id: "payment-form" do
+          .form-row
+            #card-errors
+            label for="card-element" 
+              | Credit or debit card
+            #card-element
+            = hidden_field_tag :plan, current_plan
+          .form-row.text-right
+            button.btn.btn-primary type="button"  Submit
 
 javascript:
   // Create a Stripe client
@@ -125,7 +138,7 @@ javascript:
     $(".show-card-form").on("click", function(e) {
       e.preventDefault();
 
-      $('#existing-card').hide();
-      $('#payment-form').show();
+      $('#old-payment').hide();
+      $('#new-payment').show();
     });
   });
