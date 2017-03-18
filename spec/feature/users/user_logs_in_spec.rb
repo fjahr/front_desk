@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User logs in", type: :feature do
   before :each do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, email: 'test@example.com')
     FactoryGirl.create(:account, :subscribed, user: user)
   end
 
