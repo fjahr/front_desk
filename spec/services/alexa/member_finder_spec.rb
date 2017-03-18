@@ -74,7 +74,21 @@ RSpec.describe MemberFinder do
           expect(subject).to eq(member)
         end
       end
-   end
+
+      context "member name and alias name are same" do
+        let(:member_name) { "erlich" }
+        let(:given_name) { "erlich" }
+
+
+        let!(:member2) { FactoryGirl.create(:member, name: "not erlich", account: account) }
+        let!(:alias) { FactoryGirl.create(:alias, member: member2, name: alias_name) }
+        let(:alias_name) { "erlich" }
+
+        it "member name is found first" do
+          expect(subject).to eq(member)
+        end
+      end
+    end
   end
 end
 
