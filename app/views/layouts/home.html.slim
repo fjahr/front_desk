@@ -23,5 +23,5 @@ html
       }
   body
     = yield
-    - if Rails.env == "development"
+    - if Rails.env == "staging"
       = render "shared/staging"
