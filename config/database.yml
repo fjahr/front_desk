@@ -83,3 +83,9 @@ production:
   database: front_desk_production
   username: front_desk
   password: <%= ENV['FRONT_DESK_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: front_desk_staging
+  username: front_desk
+  password: <%= ENV['FRONT_DESK_DATABASE_PASSWORD'] %>
