@@ -17,8 +17,11 @@
 @import "bootstrap";
 
 body {
-  padding-top: 65px;
   background-color: #eceff1;
+}
+
+.nav-buffer {
+  padding-top: 65px;
 }
 
 nav.navbar.navbar-inverse {

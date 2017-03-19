@@ -1,0 +1,14 @@
+.devise-form.sign-in
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"}) do |f|
+    h2.form-signin-heading Login
+    = f.email_field :email, autofocus: true, id: "inputEmail", class: "form-control"
+    = f.password_field :password, autocomplete: "off", id: "inputPassword", class: "form-control"
+    .checkbox
+      - if devise_mapping.rememberable?
+        .field
+          label.custom-control.custom-checkbox
+            = f.check_box :remember_me, class: "custom-control-input"
+            span.custom-control-indicator
+            span.custom-control-description Remember me
+    = f.submit "Log in", class: "btn btn-lg btn-primary btn-block"
+    = render "devise/shared/links"
