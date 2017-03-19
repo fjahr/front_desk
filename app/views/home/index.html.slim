@@ -11,14 +11,15 @@
       - else
         = link_to('Login', new_user_session_path, class: "nav-link")
 #stage.stage
-  .block.block-inverse.block-fill-height.app-header style=("background-image: url(/office.jpg);") 
+  .block.block-inverse.block-fill-height.app-header style=("background-image: #{image_path("office.jpg")};") 
     .container.py-4.fixed-top.app-navbar
       nav.navbar.navbar-transparent.navbar-padded.navbar-toggleable-sm
         button.navbar-toggler.navbar-toggler-right.hidden-md-up data-distance="-250" data-target="#stage" data-toggle="stage" type="button" 
           span.navbar-toggler-icon
         a.navbar-brand.mr-auto href="" 
           strong style=("background: #fff; padding: 8px 4px 8px 4px; border-radius: 4px;") 
-            img src="/front_desk_logo.svg" /
+            = image_tag "front_desk_logo.svg"
+
         .hidden-sm-down.text-uppercase
           ul.navbar-nav
             li.nav-item.px-1
@@ -37,7 +38,7 @@
       .container
         .row
           .mx-auto.d-block
-            img src="/echo_dot.png" /
+            = image_tag "echo_dot.png"
         .row
           .text-center style=("width: 100%") 
             h1.block-titleData.frequency Meet your first receptionist
@@ -51,7 +52,6 @@
         .col-md-6.offset-md-1.col-sm-12.offset-sm-0
           h6.text-muted.text-uppercase Rich Information
           h3 Make informed decisions with historical &amp; real time data.
-          p.lead.mb-4 We combine immediate real time events with rich historical data to help answer the toughest questions about retention, growth, and engagement.
           .row.hidden-md-down
             .col-sm-6.mb-3
               h5 Data frequency
