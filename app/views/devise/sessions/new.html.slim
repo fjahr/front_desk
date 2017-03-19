@@ -1,8 +1,8 @@
 .devise-form.sign-in
   = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin"}) do |f|
     h2.form-signin-heading Login
-    = f.email_field :email, autofocus: true, id: "inputEmail", class: "form-control"
-    = f.password_field :password, autocomplete: "off", id: "inputPassword", class: "form-control"
+    = f.email_field :email, autofocus: true, id: "inputEmail", class: "form-control", placeholder: "Email"
+    = f.password_field :password, autocomplete: "off", id: "inputPassword", class: "form-control", placeholder: "Password"
     .checkbox
       - if devise_mapping.rememberable?
         .field
