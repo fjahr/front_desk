@@ -1,11 +1,3 @@
-GIT
-  remote: git@github.com:damianFC/alexa-rubykit.git
-  revision: 49bb2e8820a61a086d4978ad207c00d67a1a8aea
-  specs:
-    alexa_rubykit (1.2.0)
-      bundler (~> 1.7)
-      rake
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -64,6 +56,9 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     alexa_generator (0.3.1)
+    alexa_rubykit (1.2.0)
+      bundler (~> 1.7)
+      rake
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (7.1.4)
@@ -344,7 +339,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (~> 1.0.0.pre5)
   alexa_generator
-  alexa_rubykit!
+  alexa_rubykit (~> 1.2)
   bootstrap (~> 4.0.0.alpha6)
   byebug
   capybara

@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'doorkeeper'
 gem 'devise'
 gem 'pg'
-gem 'alexa_rubykit', git: 'git@github.com:damianFC/alexa-rubykit.git'
+gem 'alexa_rubykit', '~> 1.2'
 gem 'alexa_generator'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 source 'https://rails-assets.org' do
