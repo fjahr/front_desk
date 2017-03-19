@@ -50,6 +50,9 @@ gem "slim-rails"
 gem 'slack-notifier', '~> 2.1'
 gem 'httparty'
 gem 'rails-controller-testing'
+group :staging do
+  gem 'rack_password'
+end
 
 # prelim change to track development of active admin 1.0
 gem 'inherited_resources', '~> 1.7'
