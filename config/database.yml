@@ -79,13 +79,22 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: front_desk_production
-  username: front_desk
-  password: <%= ENV['FRONT_DESK_DATABASE_PASSWORD'] %>
+    <<: *default
+    adapter: postgresql
+    encoding: unicode
+    database: <%= ENV['RDS_DB_NAME'] %>
+    username: <%= ENV['RDS_USERNAME'] %>
+    password: <%= ENV['RDS_PASSWORD'] %>
+    host: <%= ENV['RDS_HOSTNAME'] %>
+    port: <%= ENV['RDS_PORT'] %>
 
 staging:
-  <<: *default
-  database: front_desk_staging
-  username: front_desk
-  password: <%= ENV['FRONT_DESK_DATABASE_PASSWORD'] %>
+    <<: *default
+    adapter: postgresql
+    encoding: unicode
+    database: <%= ENV['RDS_DB_NAME'] %>
+    username: <%= ENV['RDS_USERNAME'] %>
+    password: <%= ENV['RDS_PASSWORD'] %>
+    host: <%= ENV['RDS_HOSTNAME'] %>
+    port: <%= ENV['RDS_PORT'] %>
+
