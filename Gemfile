@@ -52,8 +52,8 @@ gem 'httparty'
 gem 'rails-controller-testing'
 
 # prelim change to track development of active admin 1.0
-gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
-gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+gem 'inherited_resources', '~> 1.7'
+gem 'activeadmin', '~> 1.0.0.pre5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
