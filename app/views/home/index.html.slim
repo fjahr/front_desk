@@ -11,7 +11,7 @@
       - else
         = link_to('Login', new_user_session_path, class: "nav-link")
 #stage.stage
-  .block.block-inverse.block-fill-height.app-header style=("background-image: #{image_path("office.jpg")};") 
+  .block.block-inverse.block-fill-height.app-header style=("background-image: url(#{image_path("office.jpg")});") 
     .container.py-4.fixed-top.app-navbar
       nav.navbar.navbar-transparent.navbar-padded.navbar-toggleable-sm
         button.navbar-toggler.navbar-toggler-right.hidden-md-up data-distance="-250" data-target="#stage" data-toggle="stage" type="button" 
