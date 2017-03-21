@@ -26,3 +26,6 @@ coverage
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# production secrets
+production_secrets.yml

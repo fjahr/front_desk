@@ -7,25 +7,31 @@
         = link_to 'Add Member', new_member_path, class: "btn btn-secondary"
 
 .page-content
-  table.table.table-bordered.table-striped
-    thead
-      tr
-        th Name
-        th Email
-        th Phone
-        th Slack
-        th Actions
-    tbody
-      - @members.each do |member|
+  - if @members.any?
+    table.table.table-bordered.table-striped
+      thead
         tr
-          td= member.name
-          td= member.email
-          td= member.phone
-          td= member.slack_id
-          td
-            = link_to 'Show', member
-            |  | 
-            = link_to 'Edit', edit_member_path(member)
-            |  | 
-            = link_to 'Destroy', member, method: :delete, data: {confirm: 'Are you sure?'}
-  = paginate @members
+          th Name
+          th Email
+          th Phone
+          th Slack
+          th Actions
+      tbody
+        - @members.each do |member|
+          tr
+            td= member.name
+            td= member.email
+            td= member.phone
+            td= member.slack_id
+            td
+              = link_to 'Show', member
+              |  | 
+              = link_to 'Edit', edit_member_path(member)
+              |  | 
+              = link_to 'Destroy', member, method: :delete, data: {confirm: 'Are you sure?'}
+    = paginate @members
+  - else
+    p.nothing-here.text-center
+      | It looks like you don't have any members yet.
+      br
+      | We can automatically import your team when you create the Slack integration.

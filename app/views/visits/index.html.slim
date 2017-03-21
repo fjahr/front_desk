@@ -2,25 +2,29 @@
   h1 Visits
 
 .page-content
-  table.table.table-bordered.table-striped
-    thead
-      tr
-        th Date
-        th Time
-        th Visitor Name
-        th Member Name
-        th State
-    tbody
-      - @visits.each do |visit|
+  - if @visits.any?
+    table.table.table-bordered.table-striped
+      thead
         tr
-          td= visit.created_at.to_date
-          td= visit.created_at.strftime("%H:%M")
-          td= visit.visitor_name || "N/A"
-          - if visit.member_name && visit.member && visit.member.name
-            td= "#{visit.member_name} (#{visit.member.name})"
-          - elsif visit.member_name
-            td= "#{visit.member_name} (No match)"
-          - else
-            td= "N/A"
-          td= visit.state
-  = paginate @visits
+          th Date
+          th Time
+          th Visitor Name
+          th Member Name
+          th State
+      tbody
+        - @visits.each do |visit|
+          tr
+            td= visit.created_at.to_date
+            td= visit.created_at.strftime("%H:%M")
+            td= visit.visitor_name || "N/A"
+            - if visit.member_name && visit.member && visit.member.name
+              td= "#{visit.member_name} (#{visit.member.name})"
+            - elsif visit.member_name
+              td= "#{visit.member_name} (No match)"
+            - else
+              td= "N/A"
+            td= visit.state
+    = paginate @visits
+  - else
+    .text-center
+      p.nothing-here It looks like you don't have any visits yet.

@@ -85,4 +85,10 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: Rails.application.secrets.mailgun_api_key,
+    domain: 'mail.alexafrontdesk.com',
+  }
 end

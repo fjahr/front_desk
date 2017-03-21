@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_subscription!
+  before_action :authorize_subscription!, except: [:new, :create]
 
   def new
   end
@@ -30,8 +30,8 @@ class SubscriptionsController < ApplicationController
       ) if params[:card_last4]
       account.save
 
-      flash.notice = "Success! Thanks for joining!"
-      redirect_to dashboard_path
+      flash.notice = "Thanks for joining Front Desk! Lets get started creating your integrations."
+      redirect_to integrations_path
     rescue Stripe::CardError => e
       flash.alert = e.message
       render action: :new

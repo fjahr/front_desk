@@ -53,6 +53,7 @@ gem 'rails-controller-testing'
 group :staging do
   gem 'rack_password'
 end
+gem 'mailgun-ruby', '~>1.1.4'
 
 # prelim change to track development of active admin 1.0
 gem 'inherited_resources', '~> 1.7'
