@@ -1,15 +1,20 @@
 #sidebar.stage-shelf.stage-shelf-right.hidden
   ul.nav.nav-bordered.nav-stacked.flex-column
-    li.nav-header Examples
+    li.nav-header Front Desk
     li.nav-item
-      a.nav-link.active href="index.html"  Startup
+      a.nav-link href="#why" Why Front Desk
     li.nav-item
-      a.nav-link href="minimal/index.html"  Minimal
+      a.nav-link href="#features" Features
+    li.nav-item
+      a.nav-link href="#pricing" Pricing
+    li.nav-item
+      a.nav-link href="https://gist.github.com/fjahr/6934db640cb91a81e623c7347930255c" target="_blank" Setup
     li.nav-item
       - if user_signed_in?
-        = link_to('Logout', destroy_user_session_path, :method => :delete, class: "nav-link")
+        = link_to('My Account', dashboard_path, class: "nav-link")
       - else
         = link_to('Login', new_user_session_path, class: "nav-link")
+
 #stage.stage
   .block.block-inverse.block-fill-height.app-header style=("background-image: url(#{image_path("office.jpg")});") 
     .container.py-4.fixed-top.app-navbar
@@ -19,6 +24,8 @@
         a.navbar-brand.mr-auto href="" 
           strong style=("background: #fff; padding: 8px 4px 8px 4px; border-radius: 4px;") 
             = image_tag "front_desk_logo.svg"
+            span.brand-name
+              | Front Desk
 
         .hidden-sm-down.text-uppercase
           ul.navbar-nav
@@ -29,9 +36,8 @@
             li.nav-item.px-1
               a.nav-link href="#pricing" Pricing
             li.nav-item.px-1
-              a.nav-link href="#setup" Setup
+              a.nav-link href="https://gist.github.com/fjahr/6934db640cb91a81e623c7347930255c" target="_blank" Setup
             li.nav-item.px-1
-            li.nav-item
               - if user_signed_in?
                 = link_to('My Account', dashboard_path, class: "nav-link")
               - else
@@ -44,8 +50,9 @@
         .row
           .text-center style=("width: 100%")
             h1.block-titleData.frequency Meet your new receptionist
-            p.lead.mb-4.text-muted Let your employees focused on more important tasks while Alexa handles office visitors.
-            button.btn.btn-primary.btn-lg Get started
+            p.lead.mb-4.text-muted Let your employees focus on more important tasks while Alexa receives your office visitors.
+            a href="#pricing"
+              button.btn.btn-outline-primary.btn-outline-home.btn-lg Get started
   #why.block.block-secondary
     .container
       .row.app-align-center
@@ -56,7 +63,7 @@
           h3 Less interruptions lead to better results and happier employees
           .row
             .col-sm-6.mb-3
-              h5 Results
+              h5 Better results
               p
                 | According to a study by Gloria Mark at UC Irvine, it takes a knowledge worker almost 
                 | <b>25 minutes</b> to regain focus after having been interrupted. The work task in this study was 
@@ -80,20 +87,20 @@
       .row.app-align-center
         .col-md-5.push-md-7
           pre.app-code
-            | Monthly distractions:         100 (~5 per day)
+            | Monthly distractions:          100 (~5 per day)
             br
-            | Cost per distraction:         25 minutes
+            | Cost per distraction:          25 minutes
             br
-            | Total time spend per month:   41.67 hours
+            | Total time distracted:         41.67 hours
             br
-            | Hourly employee cost:         31.25 $ (60k/yr)
+            | Hourly employee cost:          31.25 $ (60k/yr)
             br
             |-----------------------------------------------
             br
-            | Total cost per month:         1,302.18 $
+            | Total cost per month:          1,302.18 $
         .col-md-6.pull-md-5
           h6.text-muted.text-uppercase Cost savings
-          h3 Save potentially thousands of dollars in productivity
+          h3 Unlock thousands of dollars in lost productivity
           p.lead.mb-4.text-muted
             | To give you a feeling for how much you can gain from using Front Desk, we made a simple back-of-the-envelope 
             | calculation: If your employees were making about 60,000 $ per year on average and you have about 5 office visiors 
@@ -102,10 +109,10 @@
     .container
       .row.app-align-center.py-3
         .col-sm-5.push-sm-7.py-5
-          h6.text-muted.text-uppercase.mb-2 Value your employees
+          h6.text-muted.text-uppercase.mb-2 More important than cost savings
           h3.mb-4
-            | Even more important than cost savings: you show your employees that you value them for their skills 
-            | by keeping distractions away from them and letting them focus on their jobs.
+            | Show your employees that you value them for their skills 
+            | by keeping distractions away from them and letting them focus on their jobs!
   .block.app-ribbon.py-5#features
     .container.text-xs-center.integration-logos
       .row.mb-5
@@ -117,40 +124,46 @@
       .row.mb-5
         .col-xs-10.offset-xs-1.col-sm-8.offset-sm-2.col-lg-6.offset-lg-3
           h6.text-muted.text-uppercase.mb-2 Features
-          h3.mb-4 Everything you need to let Alexa handle your Front Desk
+          h3.mb-4 Everything you need to let Alexa handle your office visitors
       .row.app-marketing-grid
         .col-md-4.px-4.mb-5
-          img.mb-1 src="assets/img/startup-9.svg" /
+          .feature-img
+            = image_tag "team.svg", class: "mb-1", height: '120'
           p
-            strong 24/7 support.
-            | We’re always here for you no matter what time of day.
+            strong Manage your team. 
+            | Full control over who is notified under which aliases.
         .col-md-4.px-4.mb-5
-          img.mb-1 src="assets/img/startup-10.svg" /
+          .feature-img
+            = image_tag "track.svg", class: "mb-1", height: '80'
           p
-            strong E-commerce.
-            | We automatically handle all sales analytics.
+            strong Tracking. 
+            | Keep track of all your office visits.
         .col-md-4.px-4.mb-5
-          img.mb-1 src="assets/img/startup-11.svg" /
+          .feature-img
+            = image_tag "puzzle.svg", class: "mb-1", height: '110'
           p
-            strong Turnaround.
-            | Our data analysis is distributed, so it processes in seconds.
+            strong Integrations. 
+            | Seamless integrations make setup quick and painless.
       .row.app-marketing-grid
         .col-md-4.px-4.mb-5
-          img.mb-1 src="assets/img/startup-12.svg" /
+          .feature-img
+            = image_tag "data.svg", class: "mb-1"
           p
-            strong Rich calculations.
-            | Limitless ways to splice and dice your data.
+            strong Data control. 
+            | You have full control over the data recorded by Front Desk.
         .col-md-4.px-4.mb-5
-          img.mb-1 src="assets/img/startup-13.svg" /
+          .feature-img
+            = image_tag "support.svg", class: "mb-1"
           p
-            strong Mobile apps.
-            | iOS and Android apps available for monitoring.
+            strong Fast support. 
+            | We know the first impression can be important for visitors.
         .col-md-4.px-4.mb-5
-          img.mb-1 src="assets/img/startup-14.svg" /
+          .feature-img
+            = image_tag "encryption.svg", class: "mb-1", height: '80'
           p
-            strong Secure connections.
+            strong Secure connections. 
             | Every single request is routed through HTTPS.
-  .block.app-price-plans
+  #pricing.block.app-price-plans
     .container.text-center
       .row.mb-5
         .col-md-8.offset-md-2.col-lg-6.offset-lg-3
@@ -160,56 +173,67 @@
         .col-md-4.px-4.pb-2.mb-5
           .px-2.mb-2
             h6.text-muted.text-uppercase.mb-4 Chat
-            img.mb-4 src="assets/img/startup-16.svg" /
-            p.pb-2 Plenty of processing power for any personal projects, big or small.
+            = image_tag "price_49.svg", class: "mb-4"
+            p.pb-2 Alexa notifies the right employee through your companies chat app, like Slack or Hipchat.
           ul.list-unstyled.list-bordered.text-xs-left.my-4
             li.py-4
-              strong 2,000
-              | monthly visit notifications
+              strong Unlimited 
+              | team members
             li.py-4
-              strong 9am-5pm
-              | technical supprt
+              strong Tracking 
+              | of all office visits
             li.py-4
-              strong Public
-              | API access
+              strong 2,000 
+              | chat notifications per month
+            li.py-4
+              .none-style
+                strong No 
+                | SMS notifications
           button.btn.btn-lg.btn-primary.btn-block
             | Get started
         .col-md-4.px-4.pb-2.mb-5
           .px-2
             h6.text-muted.text-uppercase.mb-4 Chat + Phone
-            img.mb-4 src="assets/img/startup-16.svg" /
-            p.pb-2 The perfect sized plan for small businesses to get started.
+            = image_tag "price_99.svg", class: "mb-4"
+            p.pb-2 Alexa notifies employees through chat and also sends a SMS to their mobile phone.
           ul.list-unstyled.list-bordered.text-xs-left.my-4
             li.py-4
-              strong 2,000
-              | monthly chat notifications
+              strong Unlimited 
+              | team members
             li.py-4
-              strong 24/7
-              | technical supprt
+              strong Tracking 
+              | of all office visits
             li.py-4
-              strong Public
-              | API access
+              strong 2,000 
+              | chat notifications per month
+            li.py-4
+              strong 2,000 
+              | SMS notifications per month
           button.btn.btn-lg.btn-primary.btn-block
-            | Start
-            span.hidden-lg-down a business account
+            | I want this!
         .col-md-4.px-4.pb-1.mb-5
           .px-2
-            h6.text-muted.text-uppercase.mb-4 All you can eat
-            img.mb-4 src="assets/img/startup-17.svg" /
-            p.pb-2 An unlimited plan that will scale infinitely to any size project.
+            h6.text-muted.text-uppercase.mb-4 Enterprise
+            .no-price.mb-4
+              | Contact 
+              br
+              | Us
+            p.pb-2 You have more visitors than the other plans allow? Please talk to us directly :)
           ul.list-unstyled.list-bordered.text-xs-left.my-4
             li.py-4
-              strong Unlimited
-              | monthly requests
+              strong Unlimited 
+              | team members
             li.py-4
-              strong 24/7
-              | technical supprt
+              strong Tracking 
+              | of all office visits
             li.py-4
-              strong Public &amp; Private
-              | API access
+              strong Unlimited 
+              | chat notifications
+            li.py-4
+              strong Unlimited 
+              | phone notifications
           button.btn.btn-lg.btn-primary.btn-block
-            | Start
-            span.hidden-lg-down a corporate account
+            | I want this!
   .block.block-inverse.app-footer
     .container
       .row
@@ -218,24 +242,21 @@
             li.mb-2
               h6.text-uppercase About
             li.text-muted
-              | We’ve been working on Go Analytics for the better part of a decade and are super proud of what we’ve created. If you’d like to learn more, or are interested in a job, contact us anytime at
-              a href=("mailto: themes@getbootstrap.com")  themes@getbootstrap.com
+              | We believe that voice interfaces will have a big impact on the business world in the coming years. If you’d like to learn more, or have any questions about out product, contact us anytime at
+              a href=("mailto: support@alexafrontdesk.com")  support@alexafrontdesk.com
+              | .
         .col-md-2.offset-md-1.mb-5
           ul.list-unstyled.list-spaced
             li.mb-2
               h6.text-uppercase Product
-            li.text-muted Features
-            li.text-muted Examples
-            li.text-muted Tour
-            li.text-muted Gallery
-        .col-md-2.mb-5
-          ul.list-unstyled.list-spaced
-            li.mb-2
-              h6.text-uppercase Apis
-            li.text-muted Rich data
-            li.text-muted Simple data
-            li.text-muted Real time
-            li.text-muted Social
+            li
+              a.text-muted href="#why" Why Front Desk
+            li
+              a.text-muted href="#features" Features
+            li
+              a.text-muted href="#pricing" Pricing
+            li
+              a.text-muted href="https://gist.github.com/fjahr/6934db640cb91a81e623c7347930255c" target="_blank" Setup
         .col-md-2.mb-5
           ul.list-unstyled.list-spaced
             li.mb-2

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="98px" viewBox="0 0 120 98" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" fill-rule="nonzero" fill="#0068A8">
+            <g id="encryption" style="mix-blend-mode: color;" transform="translate(-109.000000, -9.000000)">
+                <g id="Group">
+                    <g transform="translate(109.000000, 9.000000)">
+                        <path d="M113.5,0.4 L6.5,0.4 C2.9,0.4 0,3.3 0,6.9 L0,91 C0,94.6 2.9,97.5 6.5,97.5 L113.5,97.5 C117.1,97.5 120,94.6 120,91 L120,6.9 C120,3.4 117.1,0.4 113.5,0.4 Z M6.5,5.4 L113.5,5.4 C114.3,5.4 115,6.1 115,6.9 L115,23 L5,23 L5,6.9 C5,6.1 5.7,5.4 6.5,5.4 Z M113.5,92.6 L6.5,92.6 C5.7,92.6 5,91.9 5,91.1 L5,26 L115,26 L115,91.1 C115,91.9 114.3,92.6 113.5,92.6 Z" id="Shape"></path>
+                        <circle id="Oval" cx="14.1" cy="14.5" r="3.1"></circle>
+                        <circle id="Oval" cx="24.1" cy="14.5" r="3.1"></circle>
+                        <circle id="Oval" cx="34.1" cy="14.5" r="3.1"></circle>
+                        <path d="M45.1,50.2 L45.1,46.1 C45.1,42.1 41.9,38.9 38,38.9 C34.1,38.9 30.9,42.1 30.9,46.1 L30.9,50.2 C28.5,50.8 26.6,52.9 26.3,55.4 L26.3,55.4 L26.3,56 L26.3,68.4 L26.3,73.8 L49.8,73.8 L49.8,68.4 L94,68.4 L94,55.4 L49.6,55.4 C49.4,52.9 47.5,50.8 45.1,50.2 Z M90.8,65.5 L49.7,65.5 L49.7,58.5 L90.9,58.5 L90.9,65.5 L90.8,65.5 Z M29.2,70.8 L29.2,65.4 L29.2,58.4 L29.2,56 C29.2,54.3 30.6,53 32.2,53 L33.8,53 L42.1,53 L43.7,53 C45.4,53 46.7,54.4 46.7,56 L46.7,70.7 L29.2,70.7 L29.2,70.8 Z M37.9,41.9 C40.2,41.9 42,43.8 42,46.1 L42,50 L33.7,50 L33.7,46.1 C33.8,43.8 35.6,41.9 37.9,41.9 Z" id="Shape"></path>
+                        <rect id="Rectangle-path" x="36.4" y="57.1" width="3" height="9.6"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

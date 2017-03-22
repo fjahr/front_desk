@@ -1,0 +1,75 @@
+//= require toolkit-startup
+//= require application-startup
+
+.staging {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  font-weight: bold;
+  color: red;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.alexa img {
+  max-width: 400px;
+}
+
+.integration-logos img {
+  max-height: 50px;
+}
+
+.none-style {
+  opacity: 0.5;
+}
+
+.no-price {
+  height: 57px;
+  width: 135px;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 auto;
+  font-size: 22px;
+  color: black;
+}
+
+a.navbar-brand {
+  strong {
+    color: #0068A8;
+  }
+
+  img, .brand-name {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+}
+
+.feature-img {
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app-ribbon {
+  background: #0068A8;
+}
+
+.btn-outline-home {
+  color: white;
+  border-color: white;
+}
+.btn-outline-home:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: white;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #0068A8;
+  border-color: #0068A8;
+}
+
+.btn-primary:hover {
+  background-color: rgba(0, 104, 168, 0.8);
+  border-color: rgba(0, 104, 168, 0.8);
+}
