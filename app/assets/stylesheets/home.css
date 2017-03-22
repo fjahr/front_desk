@@ -9,3 +9,11 @@
   color: red;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
+
+.alexa img {
+  max-width: 400px;
+}
+
+.integration-logos img {
+  max-height: 50px;
+}

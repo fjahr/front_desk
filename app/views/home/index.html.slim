@@ -23,11 +23,13 @@
         .hidden-sm-down.text-uppercase
           ul.navbar-nav
             li.nav-item.px-1
-              a.nav-link href="#" Features
+              a.nav-link href="#why" Why Front Desk
             li.nav-item.px-1
-              a.nav-link href="#" Setup
+              a.nav-link href="#features" Features
             li.nav-item.px-1
-              a.nav-link href="#" Pricing
+              a.nav-link href="#pricing" Pricing
+            li.nav-item.px-1
+              a.nav-link href="#setup" Setup
             li.nav-item.px-1
             li.nav-item
               - if user_signed_in?
@@ -37,95 +39,85 @@
     .block-xs-middle.pb-5
       .container
         .row
-          .mx-auto.d-block
-            = image_tag "echo_dot.png"
+          .mx-auto.d-block.alexa
+            = image_tag "echo_dot2.png"
         .row
-          .text-center style=("width: 100%") 
-            h1.block-titleData.frequency Meet your first receptionist
-            p.lead.mb-4.text-muted Stop your employees from interupting their focused work and let Alexa handle office visitors.
+          .text-center style=("width: 100%")
+            h1.block-titleData.frequency Meet your new receptionist
+            p.lead.mb-4.text-muted Let your employees focused on more important tasks while Alexa handles office visitors.
             button.btn.btn-primary.btn-lg Get started
-  .block.block-secondary.app-iphone-block
+  #why.block.block-secondary
     .container
       .row.app-align-center
-        .col-sm-5.hidden-sm-down
-          img.app-iphone src="assets/img/startup-2.jpg" style=("width: 100%;") /
-        .col-md-6.offset-md-1.col-sm-12.offset-sm-0
-          h6.text-muted.text-uppercase Rich Information
-          h3 Make informed decisions with historical &amp; real time data.
-          .row.hidden-md-down
+        .col-md-5.hidden-md-down
+          = image_tag "alexa_dot_w.jpg"
+        .col-lg-6.offset-md-1.col-md-12.offset-sm-0
+          h6.text-muted.text-uppercase Why use Front Desk?
+          h3 Less interruptions lead to better results and happier employees
+          .row
             .col-sm-6.mb-3
-              h5 Data frequency
+              h5 Results
               p
-                | We poll for data on a millisecond basis. You can react to new information in seconds rather than days.
-                a.text-primary href="#"  Learn more.
+                | According to a study by Gloria Mark at UC Irvine, it takes a knowledge worker almost 
+                | <b>25 minutes</b> to regain focus after having been interrupted. The work task in this study was 
+                | writing emails. We believe that the costs can be even higher for tasks demanding high levels of focus 
+                | , like programming.
+                br
+                br
+                a.text-primary href="https://www.fastcompany.com/944128/worker-interrupted-cost-task-switching" target="_blank" Learn more
             .col-sm-6
-              h5 Reliability &amp; uptime
+              h5 Happiness
               p
-                | We process our data across a massively distributed network of reliable servers to ensure 99.99% uptime, always.
-                a.text-primary href="#"  Learn more
+                | The same study found that employees that are interrupted frequently are able to compensate for 
+                | interruptions by working faster. But this comes at another cost: After only 20 minutes of 
+                | interrupted performance people reported significantly higher stress, frustration, 
+                | workload, effort, and pressure.
+                br
+                br
+                a.text-primary href="https://www.ics.uci.edu/~gmark/chi08-mark.pdf" target="_blank" Learn more
   .block.block-inverse.block-secondary.app-code-block
     .container
       .row.app-align-center
         .col-md-5.push-md-7
           pre.app-code
-            span 1
-            span goAnalytics
-            | “who are the latest 3 users?”
-            span 2
-            span 3
-            | {
-            span 4
-            | "Dave": {
-            span 5
-            | "fullName": "Dave Gamache",
-            span 6
-            | "twitterHandle": "@dhg",
-            span 7
-            | }
-            span 8
-            | "Mark": {
-            span 9
-            | "fullName": "Mark Otto",
-            span 10
-            | "twitterHandle": "@mdo",
-            span 11
-            | }
-            span 12
-            | "Jacob": {
-            span 13
-            | "fullName": "Jacob Thornton",
-            span 14
-            | "twitterHandle": "@fat",
-            span 15
-            | }
-            span 16
-            | }
+            | Monthly distractions:         100 (~5 per day)
+            br
+            | Cost per distraction:         25 minutes
+            br
+            | Total time spend per month:   41.67 hours
+            br
+            | Hourly employee cost:         31.25 $ (60k/yr)
+            br
+            |-----------------------------------------------
+            br
+            | Total cost per month:         1,302.18 $
         .col-md-6.pull-md-5
-          h6.text-muted.text-uppercase Easy development
-          h3 Natural language queries make mining data easy for anyone.
-          p.lead.mb-4.text-muted Rather than force everyone at your company to learn incredibly difficult terminal commands, we allow anyone to query the data with natural language to return data.
-          button.btn.btn-secondary.btn-lg.btn-borderless
-            | Read our docs
-  .block.block-inverse.app-high-praise style=("background-image: url(assets/img/startup-3.jpg);") 
+          h6.text-muted.text-uppercase Cost savings
+          h3 Save potentially thousands of dollars in productivity
+          p.lead.mb-4.text-muted
+            | To give you a feeling for how much you can gain from using Front Desk, we made a simple back-of-the-envelope 
+            | calculation: If your employees were making about 60,000 $ per year on average and you have about 5 office visiors 
+            | coming in every day, you are losing over 1,300 $ every month from employees handling visitors.
+  .block.block-inverse.app-high-praise style=("background-image: url(assets/img/startup-3.jpg);")
     .container
       .row.app-align-center.py-3
         .col-sm-5.push-sm-7.py-5
-          h6.text-muted.text-uppercase.mb-2 High Praise
-          h3.mb-4 “Go Analytics is amazing. Decisions that used to take weeks, now only takes minutes and is available to everyone on my team.”
-          p.mb-4.text-muted Cindy Smith, founder of Cool Startup
-  .block.app-ribbon.py-5
-    .container.text-xs-center
-      img src="assets/img/startup-4.svg" /
-      img src="assets/img/startup-5.svg" /
-      img src="assets/img/startup-6.svg" /
-      img src="assets/img/startup-7.svg" /
-      img src="assets/img/startup-8.svg" /
+          h6.text-muted.text-uppercase.mb-2 Value your employees
+          h3.mb-4
+            | Even more important than cost savings: you show your employees that you value them for their skills 
+            | by keeping distractions away from them and letting them focus on their jobs.
+  .block.app-ribbon.py-5#features
+    .container.text-xs-center.integration-logos
+      .row.mb-5
+        .col-xs-10.offset-xs-1.col-sm-8.offset-sm-2.col-lg-6.offset-lg-3
+          h6.text-muted.text-uppercase.mb-2 Integrations
+      = image_tag "slack_logo.svg"
   .block.block-secondary.app-block-marketing-grid
     .container.text-xs-center
       .row.mb-5
         .col-xs-10.offset-xs-1.col-sm-8.offset-sm-2.col-lg-6.offset-lg-3
-          h6.text-muted.text-uppercase.mb-2 Inside the machine
-          h3.mb-4 It’s not hard to see how we make your life easier every day.
+          h6.text-muted.text-uppercase.mb-2 Features
+          h3.mb-4 Everything you need to let Alexa handle your Front Desk
       .row.app-marketing-grid
         .col-md-4.px-4.mb-5
           img.mb-1 src="assets/img/startup-9.svg" /
@@ -163,17 +155,17 @@
       .row.mb-5
         .col-md-8.offset-md-2.col-lg-6.offset-lg-3
           h6.text-muted.text-uppercase.mb-2 Business Talk
-          h3 No plans. We just bump your plan whenever you need it.
+          h3 14-day free trial. Choose your plan. Cancel any time.
       .row
         .col-md-4.px-4.pb-2.mb-5
           .px-2.mb-2
-            h6.text-muted.text-uppercase.mb-4 Personal
-            img.mb-4 src="assets/img/startup-15.svg" /
+            h6.text-muted.text-uppercase.mb-4 Chat
+            img.mb-4 src="assets/img/startup-16.svg" /
             p.pb-2 Plenty of processing power for any personal projects, big or small.
           ul.list-unstyled.list-bordered.text-xs-left.my-4
             li.py-4
-              strong 10k
-              | monthly requests
+              strong 2,000
+              | monthly visit notifications
             li.py-4
               strong 9am-5pm
               | technical supprt
@@ -181,17 +173,16 @@
               strong Public
               | API access
           button.btn.btn-lg.btn-primary.btn-block
-            | Start
-            span.hidden-lg-down a personal account
+            | Get started
         .col-md-4.px-4.pb-2.mb-5
           .px-2
-            h6.text-muted.text-uppercase.mb-4 Business
+            h6.text-muted.text-uppercase.mb-4 Chat + Phone
             img.mb-4 src="assets/img/startup-16.svg" /
             p.pb-2 The perfect sized plan for small businesses to get started.
           ul.list-unstyled.list-bordered.text-xs-left.my-4
             li.py-4
-              strong 100k
-              | monthly requests
+              strong 2,000
+              | monthly chat notifications
             li.py-4
               strong 24/7
               | technical supprt
@@ -203,7 +194,7 @@
             span.hidden-lg-down a business account
         .col-md-4.px-4.pb-1.mb-5
           .px-2
-            h6.text-muted.text-uppercase.mb-4 Corporate
+            h6.text-muted.text-uppercase.mb-4 All you can eat
             img.mb-4 src="assets/img/startup-17.svg" /
             p.pb-2 An unlimited plan that will scale infinitely to any size project.
           ul.list-unstyled.list-bordered.text-xs-left.my-4
