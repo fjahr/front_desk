@@ -28,9 +28,11 @@ class Alexa::FrontDeskInteractionModel
       end
 
       model.add_intent(:GiveName) do |intent|
-        intent.add_slot(:Name, AlexaGenerator::Slot::SlotType::LITERAL)
+        intent.add_slot(:Name, 'Names') do |slot|
+          slot.add_bindings(["ben", "thomas", "richard", "john smith", "william johnson", "robert williams", "lisa", "sandra", "mary", "linda davis", "jennifer anderson", "elizabeth clark"])
+        end
 
-        intent.add_utterance_template('{John Doe|Name}')
+        intent.add_utterance_template('{Name}')
       end
 
       model.add_intent(:"AMAZON.YesIntent")

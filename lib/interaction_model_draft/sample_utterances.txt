@@ -1,0 +1,6 @@
+GiveName {Name}
+
+NotifyArrival that {VisitorName} is here to see {MemberName}
+NotifyArrival to tell {MemberName} that {VisitorName} is here
+NotifyArrival to tell {MemberName} that {VisitorName} is here to see her
+NotifyArrival to tell {MemberName} that {VisitorName} is here to see him

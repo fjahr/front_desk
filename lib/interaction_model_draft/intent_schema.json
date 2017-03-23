@@ -1,0 +1,38 @@
+{
+  "intents": [
+    {
+      "intent": "NotifyArrival",
+      "slots": [
+        {
+          "name": "MemberName",
+          "type": "Names"
+        },
+        {
+          "name": "VisitorName",
+          "type": "Names"
+        }
+      ]
+    },
+    {
+      "intent": "GiveName",
+      "slots": [
+        {
+          "name": "Name",
+          "type": "Names"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.YesIntent",
+      "slots": []
+    },
+    {
+      "intent": "AMAZON.NoIntent",
+      "slots": []
+    },
+    {
+      "intent": "AMAZON.HelpIntent",
+      "slots": []
+    }
+  ]
+}
