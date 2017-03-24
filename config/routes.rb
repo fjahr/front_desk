@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show]
   resources :charges, only: [:index, :show]
   resources :integrations, only: [:index]
-  resources :visits, only: [:index]
+  resources :visits, only: [:index, :destroy]
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'
   get '/webhooks/slack/oauth_callback', to: 'slack#oauth_callback'
