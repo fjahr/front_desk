@@ -39,7 +39,7 @@ class Alexa::Response
           if intent_name == "AMAZON.YesIntent"
             member = @visit.member
 
-            notifier = Webhooks::Slack::Notification.new("https://hooks.slack.com/services/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")
+            notifier = Webhooks::Slack::Notification.new(@account.slack_webhook)
             notifier.send(member.slack_id, @visit.visitor_name)
 
             resp.add_speech("Thanks #{@visit.visitor_name}. I notified #{member.name} of your arrival.")
