@@ -27,6 +27,7 @@ class MembersController < ApplicationController
     end
 
     if @member.save
+    require 'pry'; binding.pry
       redirect_to @member
     else
       render action: :new

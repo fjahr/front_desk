@@ -9,7 +9,6 @@ class Member < ApplicationRecord
   validates_associated :aliases
   validates :name, presence: true
   validates :account, presence: true
-  validates :sequential_id, presence: true
 
   paginates_per 10
 
