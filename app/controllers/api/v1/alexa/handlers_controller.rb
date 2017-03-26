@@ -1,4 +1,6 @@
 class Api::V1::Alexa::HandlersController < ActionController::Base
+  protect_from_forgery with: :exception
+
   prepend_before_action :set_access_token_in_params
   # before_action :doorkeeper_authorize!
   respond_to :json
