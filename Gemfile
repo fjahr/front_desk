@@ -83,4 +83,5 @@ group :development do
   gem 'pry-rails'
   gem 'rubocop', require: false
   gem 'fuubar'
+  gem 'brakeman', require: false
 end
