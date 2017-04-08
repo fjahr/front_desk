@@ -1,0 +1,25 @@
+.form-page
+  = form_for @contact, :html => {:class => 'form-signin' } do |f|
+    .row
+      .col-md-12.text-md-center
+        h3 Send us a message
+    .row
+      .col-md-6
+        .form-group
+          label for="name" Name
+          = f.text_field :name, required: true, placeholder: "Enter name", class: "form-control"
+        .form-group
+          label for="email" Email Address
+          .input-group
+            = f.email_field :email, required: true, placeholder: "Enter email", class: "form-control"
+        .form-group
+          label for="subject" Subject
+          = f.select :subject, Contact.subjects, {prompt: 'Select subject:'}, {class: "form-control", required: true}
+      .col-md-6
+        .form-group
+          label for="name" Message
+          = f.text_area :message, required: true, placeholder: "Message", class: "form-control", rows: 10
+        .invisible
+          = f.text_field :nickname, hint: "Leave this field blank!"
+      .col-md-12
+        = f.submit 'Send message', :class=> "btn btn-primary"

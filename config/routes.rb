@@ -25,6 +25,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/contact', to: "pages#contact"
+  resources "contacts", only: [:new, :create]
   root to: "home#index"
 end
