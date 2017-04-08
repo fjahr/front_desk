@@ -166,6 +166,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    mail_form (1.6.0)
+      actionmailer (>= 3.2, < 5.1)
+      activemodel (>= 3.2, < 5.1)
     mailgun-ruby (1.1.5)
       rest-client (~> 2.0)
     method_source (0.8.2)
@@ -372,6 +375,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  mail_form
   mailgun-ruby (~> 1.1.4)
   pg
   pry-rails

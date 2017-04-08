@@ -25,5 +25,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/contact', to: "pages#contact"
   root to: "home#index"
 end

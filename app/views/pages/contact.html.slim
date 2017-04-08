@@ -1,0 +1,29 @@
+.form-page
+  form.form-signin
+    .row
+      .col-md-6
+        .form-group
+          label for="name" 
+            | Name
+          input#name.form-control placeholder=("Enter name") required="required" type="text"
+        .form-group
+          label for="email" 
+            | Email Address
+          .input-group
+            input#email.form-control placeholder=("Enter email") required="required" type="email"
+        .form-group
+          label for="subject" 
+            | Subject
+          select#subject.form-control name="subject" required="required" 
+            option selected="" value="na"  Choose One:
+            option value="service"  General Customer Service
+            option value="suggestions"  Suggestions
+            option value="product"  Product Support
+      .col-md-6
+        .form-group
+          label for="name" 
+            | Message
+          textarea#message.form-control cols="25" name="message" placeholder="Message" required="required" rows="9" 
+      .col-md-12
+        button#btnContactUs.btn.btn-primary.pull-right type="submit" 
+          | Send Message
