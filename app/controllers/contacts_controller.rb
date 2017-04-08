@@ -3,6 +3,14 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+
+    case params[:subject]
+    when "phone"
+      @contact.subject = "Chat + Phone plan"
+      @contact.message = "Please notify me when the Chat + Phone plan is available"
+    when "enterprise"
+      @contact.subject = "Enterprise plan"
+    end
   end
 
   def create

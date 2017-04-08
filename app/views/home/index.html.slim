@@ -189,8 +189,7 @@
               .none-style
                 strong No 
                 | SMS notifications
-          button.btn.btn-lg.btn-primary.btn-block
-            | Get started
+          = link_to "Get started", new_user_registration_path, class: "btn btn-lg btn-primary btn-block"
         .col-md-4.px-4.pb-2.mb-5
           .px-2
             h6.text-muted.text-uppercase.mb-4 Chat + Phone
@@ -209,8 +208,7 @@
             li.py-4
               strong 2,000 
               | SMS notifications per month
-          button.btn.btn-lg.btn-primary.btn-block
-            | I want this!
+          = link_to "I want this!", new_contact_path(subject: "phone"), class: "btn btn-lg btn-primary btn-block"
         .col-md-4.px-4.pb-1.mb-5
           .px-2
             h6.text-muted.text-uppercase.mb-4 Enterprise
@@ -232,8 +230,7 @@
             li.py-4
               strong Unlimited 
               | phone notifications
-          button.btn.btn-lg.btn-primary.btn-block
-            | I want this!
+          = link_to "I want this!", new_contact_path(subject: "enterprise"), class: "btn btn-lg btn-primary btn-block"
   .block.block-inverse.app-footer
     .container
       .row
@@ -242,9 +239,9 @@
             li.mb-2
               h6.text-uppercase About
             li.text-muted
-              | We believe that voice interfaces will have a big impact on the business world in the coming years. If you’d like to learn more, or have any questions about out product, contact us anytime at
-              a href=("mailto: support@alexafrontdesk.com")  support@alexafrontdesk.com
-              | .
+              | We believe that voice interfaces will have a big impact on the business world in the coming years. If you’d like to learn more, or have any questions about out product, 
+              = link_to "contact us", new_contact_path
+              |  anytime.
         .col-md-2.offset-md-1.mb-5
           ul.list-unstyled.list-spaced
             li.mb-2
@@ -264,5 +261,5 @@
             li.text-muted Terms
             li.text-muted Legal
             li.text-muted Privacy
-            li.text-muted License
-
+            li
+              = link_to "Contact", new_contact_path, class: "text-muted"
