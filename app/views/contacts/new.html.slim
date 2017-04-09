@@ -21,5 +21,11 @@
           = f.text_area :message, required: true, placeholder: "Message", class: "form-control", rows: 10
         .invisible
           = f.text_field :nickname, hint: "Leave this field blank!"
-      .col-md-12
-        = f.submit 'Send message', :class=> "btn btn-primary"
+      - if user_signed_in?
+        .col-md-12.horizontal-buttons.text-right
+          = f.submit 'Send message', :class=> "btn btn-primary"
+      - else
+        .col-md-6.horizontal-buttons.text-left
+          = link_to "Back", root_path
+        .col-md-6.horizontal-buttons.text-right
+          = f.submit 'Send message', :class=> "btn btn-primary"
