@@ -29,7 +29,7 @@ RSpec.describe Member, type: :model do
     end
   end
 
-  ["account", "name", "sequential_id"].each do |val|
+  ["account", "name"].each do |val|
     describe "without #{val}" do
       let(:"#{val}") { nil }
 

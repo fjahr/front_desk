@@ -31,6 +31,14 @@
       "slots": []
     },
     {
+      "intent": "AMAZON.StopIntent",
+      "slots": []
+    },
+    {
+      "intent": "AMAZON.CancelIntent",
+      "slots": []
+    },
+    {
       "intent": "AMAZON.HelpIntent",
       "slots": []
     }

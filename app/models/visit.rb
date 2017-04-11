@@ -11,7 +11,8 @@ class Visit < ApplicationRecord
       start: "start",
       visitor_name_given: "VisitorNameGiven",
       member_name_given: "MemberNameGiven",
-      end: "end"
+      end: "end",
+      cancel: "cancel"
     })
   end
 end
