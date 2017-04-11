@@ -8,7 +8,7 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
     render status: 401 unless user
 
     render status: 400 unless params["request"]
-    resp = ::Alexa::Response.new(user.account, params["request"])
+    resp = ::Alexa::Response.new(user.account, params)
 
     render json: resp.build
   end
@@ -16,11 +16,7 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
   def current_doorkeeper_user
     return User.find(6) if Rails.env.development?
 
-    if doorkeeper_token.present?
-      @current_doorkeeper_user ||= User.find(doorkeeper_token.resource_owner_id)
-    else
-      nil
-    end
+    @current_doorkeeper_user ||= User.find(doorkeeper_token.resource_owner_id)
   end
 
   private
@@ -31,5 +27,11 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
 
   def token_from_params
     params["session"]["user"]["accessToken"] rescue nil
+  end
+
+  def doorkeeper_authorize!
+    return if Rails.env.development?
+
+    super
   end
 end
