@@ -1,6 +1,6 @@
 class Api::V1::Alexa::HandlersController < ActionController::Base
   prepend_before_action :set_access_token_in_params
-  # before_action :doorkeeper_authorize!
+  before_action :doorkeeper_authorize!
   respond_to :json
 
   def create
@@ -14,6 +14,8 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
   end
 
   def current_doorkeeper_user
+    return User.find(6) if Rails.env.development?
+
     if doorkeeper_token.present?
       @current_doorkeeper_user ||= User.find(doorkeeper_token.resource_owner_id)
     else
