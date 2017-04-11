@@ -6,13 +6,11 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
   respond_to :json
 
   def create
-    # user = current_doorkeeper_user
-    # render status: 401 unless user
+    user = current_doorkeeper_user
+    render status: 401 unless user
 
     render status: 400 unless params["request"]
-    # resp = ::Alexa::Response.new(user.account, params["request"])
-    # auth hardcoded for testing with the alexa test env
-    resp = ::Alexa::Response.new(Account.last, params)
+    resp = ::Alexa::Response.new(user.account, params["request"])
 
     render json: resp.build
   end
