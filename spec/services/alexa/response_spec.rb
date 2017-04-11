@@ -64,4 +64,46 @@ RSpec.describe Alexa::Response do
     end
   end
 
+  context "cancel request" do
+    let(:params) {
+      {
+        "session"=> {
+          "sessionId"=> "SessionId.ef053707-24d3-4242-b958-cdd023c18fe2",
+          "application"=> {
+            "applicationId"=> "amzn1.ask.skill.ae5b4662-b03b-4622-86e0-4547b16318bd"
+          },
+          "attributes"=> {},
+          "user"=> {
+            "userId"=> "amzn1.ask.account.AFHUMJVEKHM4WP4R4WWJSRLQQBEWYE7VRF6J26YUEAJAD7OZ3PT6FN7PGQ57UNKTIH3U5U7PJTTBBFLHWP5HZH6NHWZRKZJGPL75CN2WN5S5B5U7M7GSNBPHDEDQZMU2SZZELAP2U2R5Z3Z7G7UDFSMAGSQ5APJTTOZYYCUWDLLTHK5BSFCXJWAM3752YEINZ4UYC2NQZM3FBGQ"
+          },
+          "new"=> true
+        },
+        "request"=> {
+          "type"=> "IntentRequest",
+          "requestId"=> "EdwRequestId.e97b568e-bd03-43c8-a04a-137ba0b813ac",
+          "locale"=> "en-US",
+          "timestamp"=> "2017-04-11T13:42:52Z",
+          "intent"=> {
+            "name"=> "AMAZON.StopIntent",
+            "slots"=> {}
+          }
+        },
+        "version"=> "1.0"
+      }
+    }
+
+    it "answers with good bye and ends session" do
+      expect(subject.build).to eq(
+        {"version": "1.0",
+         "response":{
+          "outputSpeech":
+          {"type": "PlainText",
+           "text": "Good bye."
+        },
+        "shouldEndSession": true
+        }}.to_json
+      )
+    end
+  end
+
 end

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_raven_context
 
   def current_account
     current_user.account
@@ -15,5 +16,10 @@ class ApplicationController < ActionController::Base
     elsif current_account.expired?
       redirect_to new_subscription_path, notice: "Please reactivate your subscription to access your account."
     end
+  end
+
+  def set_raven_context
+    Raven.user_context(id: session[:current_user_id]) # or anything else in session
+    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
 end

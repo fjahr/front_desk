@@ -11,7 +11,10 @@ module FrontDesk
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    Raven.configure do |config|
+      config.dsn = 'https://ab593a1ce5f74cd68cd4a8562238eaa5:22d502fbfa524cae9e99f86f5f1babdb@sentry.io/157388'
+      config.environments = ['staging', 'production']
+    end
 
     config.generators do |g|
       g.test_framework :rspec, fixture: true
