@@ -14,7 +14,11 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
   end
 
   def current_doorkeeper_user
-    @current_doorkeeper_user ||= User.find(doorkeeper_token.resource_owner_id)
+    if doorkeeper_token.present?
+      @current_doorkeeper_user ||= User.find(doorkeeper_token.resource_owner_id)
+    else
+      nil
+    end
   end
 
   private
