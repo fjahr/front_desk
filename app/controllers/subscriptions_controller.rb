@@ -30,7 +30,7 @@ class SubscriptionsController < ApplicationController
       ) if params[:card_last4]
       account.save
 
-      flash.notice = "Thanks for joining Front Desk! Lets get started creating your integrations."
+      flash.notice = "Thanks for joining Front Desk! Lets get started by adding your integrations."
       redirect_to integrations_path
     rescue Stripe::CardError => e
       flash.alert = e.message
