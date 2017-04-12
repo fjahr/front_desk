@@ -1,8 +1,6 @@
-require 'slack'
-
 class SlackNotification
   def initialize(account)
-    @client = Slack::Client.new(token: account.slack_token)
+    @client = Slack::Web::Client.new(token: account.slack_token)
   end
 
   def send(member, visitor_name)
