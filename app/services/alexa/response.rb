@@ -11,7 +11,12 @@ class Alexa::Response
 
     case intent_type
     when "LaunchRequest"
-      resp.add_speech('Welcome! Please tell me your name.')
+      if @account.name.present?
+        resp.add_speech("Welcome to #{@account.name}! Please tell me your name.")
+      else
+        resp.add_speech('Welcome! Please tell me your name.')
+      end
+
       @visit.update(state: Visit.states.start)
     when "IntentRequest"
       if (intent_name == "AMAZON.CancelIntent" || intent_name == "AMAZON.StopIntent")

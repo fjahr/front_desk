@@ -12,6 +12,8 @@ class SlackController < ApplicationController
     token = response["access_token"]
 
     current_account.update(slack_token: token, slack_webhook: webhook_url)
+    importer = SlackImporter.new(current_account)
+    importer.run
 
     notifier = SlackNotification.new(current_account)
     notifier.send_linking_success(channel)
