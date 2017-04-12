@@ -26,5 +26,8 @@ Rails.application.routes.draw do
   end
 
   resources "contacts", only: [:new, :create]
+  get "/disclaimer", to: "pages#disclaimer"
+  get "/privacy", to: "pages#privacy"
+  get "/imprint", to: "pages#imprint"
   root to: "home#index"
 end

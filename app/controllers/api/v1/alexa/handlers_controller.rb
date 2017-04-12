@@ -4,11 +4,10 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
   respond_to :json
 
   def create
-    user = current_doorkeeper_user
-    render status: 401 unless user
+    render status: 401 unless current_doorkeeper_user
+    render status: 400 unless valid_request
 
-    render status: 400 unless params["request"]
-    resp = ::Alexa::Response.new(user.account, params)
+    resp = ::Alexa::Response.new(current_doorkeeper_user.account, params)
 
     render json: resp.build
   end
@@ -20,6 +19,10 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
   end
 
   private
+
+  def valid_request
+    params["request"].present? && params["session"].present?
+  end
 
   def set_access_token_in_params
     request.parameters[:access_token] = token_from_params

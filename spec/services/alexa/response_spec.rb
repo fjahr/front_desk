@@ -39,16 +39,6 @@ RSpec.describe Alexa::Response do
 
   subject { Alexa::Response.new(account, params) }
 
-  context "of a invalid request" do
-    let(:params) {
-      {}
-    }
-
-    it "throws an exception" do
-      expect { subject.build }.to raise_error(InvalidRequestError)
-    end
-  end
-
   context "of a valid request" do
     it "builds a valid response" do
       expect(subject.build).to eq(

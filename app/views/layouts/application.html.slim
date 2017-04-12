@@ -2,17 +2,17 @@ doctype html
 html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
-    title FrontDesk
+    title Front Desk
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'https://js.stripe.com/v3/', 'data-turbolinks-track': 'reload'
     = tag :meta, name: "stripe-public-key", content: Rails.application.secrets.stripe_public_key
   body
-    - if user_signed_in?
-      nav.navbar.navbar-toggleable-md.navbar-inverse.fixed-top
-        button.navbar-toggler.navbar-toggler-right aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarsExampleDefault" data-toggle="collapse" type="button" 
-          span.navbar-toggler-icon
-        a.navbar-brand href="#"  Front Desk
+    nav.navbar.navbar-toggleable-md.navbar-inverse.fixed-top
+      button.navbar-toggler.navbar-toggler-right aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarsExampleDefault" data-toggle="collapse" type="button" 
+        span.navbar-toggler-icon
+      a.navbar-brand href="#{root_path}"  Front Desk
+      - if user_signed_in?
         #navbarsExampleDefault.collapse.navbar-collapse
           ul.navbar-nav.mr-auto
             = nav_link "Dashboard", dashboard_path
@@ -28,7 +28,16 @@ html
                 = link_to "Settings", edit_user_registration_path, class: "dropdown-item"
             li.nav-item
               = link_to('Logout', destroy_user_session_path, :method => :delete, class: "nav-link")
-      .nav-buffer
+      - else
+        #navbarsExampleDefault.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+            = nav_link "Home", root_path
+            li.nav-item.px-1
+              - if user_signed_in?
+                = link_to('My Account', dashboard_path, class: "nav-link")
+              - else
+                = link_to('Login', new_user_session_path, class: "nav-link")
+    .nav-buffer
     .container
       = flash_messages
       = yield

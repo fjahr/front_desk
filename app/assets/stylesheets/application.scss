@@ -96,3 +96,14 @@ nav.navbar.navbar-inverse {
   color: #468847;
   text-align: left;
 }
+
+.staging {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  font-weight: bold;
+  color: red;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+

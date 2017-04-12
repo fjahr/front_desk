@@ -1,7 +1,5 @@
 class Alexa::Response
   def initialize(account, params)
-    raise InvalidRequestError unless params["request"].present? && params["session"].present?
-
     @request = params["request"]
     @account = account
     @visit = Visit.find_or_initialize_by(account: @account, alexa_session: params["session"]["sessionId"])

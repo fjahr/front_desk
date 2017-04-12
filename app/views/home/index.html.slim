@@ -21,11 +21,9 @@
       nav.navbar.navbar-transparent.navbar-padded.navbar-toggleable-sm
         button.navbar-toggler.navbar-toggler-right.hidden-md-up data-distance="-250" data-target="#stage" data-toggle="stage" type="button" 
           span.navbar-toggler-icon
-        a.navbar-brand.mr-auto href="" 
+        a.navbar-brand.mr-auto href="#{root_path}"
           strong style=("background: #fff; padding: 8px 4px 8px 4px; border-radius: 4px;") 
             = image_tag "front_desk_logo.svg"
-            span.brand-name
-              | Front Desk
 
         .hidden-sm-down.text-uppercase
           ul.navbar-nav
@@ -258,8 +256,15 @@
           ul.list-unstyled.list-spaced
             li.mb-2
               h6.text-uppercase Legal
-            li.text-muted Terms
-            li.text-muted Legal
-            li.text-muted Privacy
+            li
+              = link_to "Disclaimer", disclaimer_path, class: "text-muted"
+            li
+              = link_to "Privacy", privacy_path, class: "text-muted"
+            li
+              = link_to "Imprint", imprint_path, class: "text-muted"
+        .col-md-2.mb-5
+          ul.list-unstyled.list-spaced
+            li.mb-2
+              h6.text-uppercase Company
             li
               = link_to "Contact", new_contact_path, class: "text-muted"
