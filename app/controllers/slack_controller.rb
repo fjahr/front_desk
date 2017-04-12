@@ -13,7 +13,7 @@ class SlackController < ApplicationController
 
     current_account.update(slack_token: token, slack_webhook: webhook_url)
 
-    notifier = Webhooks::Slack::Notification.new(webhook_url)
+    notifier = SlackNotification.new(current_account)
     notifier.send_linking_success(channel)
 
     redirect_to integrations_path, notice: "successfully linked to slack!"

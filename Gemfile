@@ -47,7 +47,8 @@ gem 'stripe'
 gem 'stripe_event'
 gem 'receipts'
 gem "slim-rails"
-gem 'slack-notifier', '~> 2.1'
+# gem 'slack-notifier', '~> 2.1'
+gem 'slack-api'
 gem 'httparty'
 gem 'rails-controller-testing'
 group :staging do
