@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    = render "shared/gtm"
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title Front Desk
     = csrf_meta_tags
@@ -40,7 +41,7 @@ html
                 = link_to('Login', new_user_session_path, class: "nav-link")
     .nav-buffer
     .container
+      = render "shared/gtm_body"
       = flash_messages
       = yield
-      - if Rails.env.staging?
-        = render "shared/staging"
+      = render "shared/staging"

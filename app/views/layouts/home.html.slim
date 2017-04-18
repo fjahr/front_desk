@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    = render "shared/gtm"
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title Front Desk
     = csrf_meta_tags
@@ -23,6 +24,6 @@ html
       }
     = render "shared/mixpanel"
   body
+    = render "shared/gtm_body"
     = yield
-    - if Rails.env.staging?
-      = render "shared/staging"
+    = render "shared/staging"

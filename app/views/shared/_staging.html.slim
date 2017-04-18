@@ -1,2 +1,3 @@
-.staging
-  = "staging #{`echo $BUILD_NUMBER`}"
+- if Rails.env.staging?
+  .staging
+    = "staging #{`echo $BUILD_NUMBER`}"
