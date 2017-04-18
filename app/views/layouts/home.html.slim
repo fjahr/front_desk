@@ -21,6 +21,7 @@ html
           -webkit-overflow-scrolling: touch;
         }
       }
+    = render "shared/mixpanel"
   body
     = yield
     - if Rails.env.staging?
