@@ -5,9 +5,9 @@ module Webhooks
         charge = event.data.object
 
         account = Account.find_by(stripe_id: charge.customer)
-        charge = account.charges.where(stripe_id: charge.id).first_or_create
+        saved_charge = account.charges.where(stripe_id: charge.id).first_or_create
 
-        charge.update(
+        saved_charge.update(
           amount: charge.amount,
           card_brand: charge.source.brand,
           card_last4: charge.source.last4,
