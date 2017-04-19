@@ -12,5 +12,5 @@
       - @charges.each do |charge|
         tr
           td= charge.created_at.to_date
-          td= number_to_currency charge.amount / 100
+          td= number_to_currency charge.amount.to_f / 100
           td= link_to "Download", charge_path(charge, format: :pdf)
