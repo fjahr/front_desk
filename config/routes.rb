@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   get "/disclaimer", to: "pages#disclaimer"
   get "/privacy", to: "pages#privacy"
   get "/imprint", to: "pages#imprint"
+  get "/setup", to: "pages#setup"
   root to: "home#index"
 end

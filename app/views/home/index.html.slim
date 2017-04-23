@@ -10,6 +10,8 @@
     li.nav-item
       a.nav-link href="https://gist.github.com/fjahr/6934db640cb91a81e623c7347930255c" target="_blank" Setup
     li.nav-item
+      = link_to('Setup', setup_path, class: "nav-link")
+    li.nav-item
       - if user_signed_in?
         = link_to('My Account', dashboard_path, class: "nav-link")
       - else
@@ -34,7 +36,7 @@
             li.nav-item.px-1
               a.nav-link href="#pricing" Pricing
             li.nav-item.px-1
-              a.nav-link href="https://gist.github.com/fjahr/6934db640cb91a81e623c7347930255c" target="_blank" Setup
+              = link_to('Setup', setup_path, class: "nav-link")
             li.nav-item.px-1
               - if user_signed_in?
                 = link_to('My Account', dashboard_path, class: "nav-link")

@@ -34,11 +34,11 @@ html
         #navbarsExampleDefault.collapse.navbar-collapse
           ul.navbar-nav.ml-auto
             = nav_link "Home", root_path
-            li.nav-item.px-1
-              - if user_signed_in?
-                = link_to('My Account', dashboard_path, class: "nav-link")
-              - else
-                = link_to('Login', new_user_session_path, class: "nav-link")
+            - if user_signed_in?
+              = nav_link "My Account", dashboard_path
+            - else
+              = nav_link "Setup", setup_path
+              = nav_link "Login", new_user_session_path
     .nav-buffer
     .container
       = render "shared/gtm_body"

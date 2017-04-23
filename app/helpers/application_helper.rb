@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def nav_link(name, path)
-    content_tag(:li, class: "nav-item #{active?(path)}") do
+    content_tag(:li, class: "nav-item px-1 #{active?(path)}") do
       link_to name, path, class: "nav-link"
     end
   end
