@@ -15,6 +15,10 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
+
+    contact_submission = ContactSubmission.new(contact_params)
+    contact_submission.save
+
     @contact.request = request
     if @contact.deliver
       flash.now[:notice] = 'Thank you for your message. We will contact you soon!'
@@ -28,6 +32,6 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:name, :email, :message, :captcha)
+    params.require(:contact).permit(:name, :email, :subject, :message, :captcha)
   end
 end

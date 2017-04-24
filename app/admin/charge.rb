@@ -1,4 +1,4 @@
-ActiveAdmin.register User do
+ActiveAdmin.register Charge do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -13,17 +13,5 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
-  index do
-    selectable_column
-    id_column
-    column :email
-    column :created_at
-    column "Subscribed?" do |user|
-      user.account.subscribed?
-    end
-    column "Account" do |user|
-      link_to "link", admin_account_path(user.account)
-    end
-    actions
-  end
+
 end
