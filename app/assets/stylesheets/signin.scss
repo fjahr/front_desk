@@ -42,7 +42,9 @@
 .form-signin .form-control:focus {
   z-index: 2;
 }
-.sign-up, .sign-in {
+.sign-up, .sign-in, .forgot-pw {
+  margin-top: -65px;
+
   .form-signin input[type="email"] {
     margin-bottom: -2px;
     border-bottom-right-radius: 0;
