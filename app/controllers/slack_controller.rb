@@ -5,7 +5,11 @@ class SlackController < ApplicationController
     client = Rails.application.secrets.slack_client
     # regenerate an put into env variables before production
     secret = Rails.application.secrets.slack_secret
-    response = ::HTTParty.get("https://slack.com/api/oauth.access?client_id=#{client}&client_secret=#{secret}&code=#{code}&redirect_uri=https://staging.alexafrontdesk.com/webhooks/slack/oauth_callback")
+
+    redirect = "https://staging.alexafrontdesk.com/webhooks/slack/oauth_callback" if Rails.env.staging?
+    redirect = "https://alexafrontdesk.com/webhooks/slack/oauth_callback" if Rails.env.production?
+
+    response = ::HTTParty.get("https://slack.com/api/oauth.access?client_id=#{client}&client_secret=#{secret}&code=#{code}&redirect_uri=#{redirect}")
 
     webhook_url = response["incoming_webhook"]["url"]
     channel = response["incoming_webhook"]["channel"]
@@ -18,6 +22,6 @@ class SlackController < ApplicationController
     notifier = SlackNotification.new(current_account)
     notifier.send_linking_success(channel)
 
-    redirect_to integrations_path, notice: "successfully linked to slack!"
+    redirect_to integrations_path, notice: "Front Desk was successfully linked to Slack!"
   end
 end
