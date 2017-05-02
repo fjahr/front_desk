@@ -2,9 +2,9 @@ class SlackController < ApplicationController
   def oauth_callback
     code = params[:code]
 
-    client = "146802301377.152576575970"
+    client = Rails.application.secrets.slack_client
     # regenerate an put into env variables before production
-    secret = "492419298a0e1bebc96af06b7aac8497"
+    secret = Rails.application.secrets.slack_secret
     response = ::HTTParty.get("https://slack.com/api/oauth.access?client_id=#{client}&client_secret=#{secret}&code=#{code}&redirect_uri=https://staging.alexafrontdesk.com/webhooks/slack/oauth_callback")
 
     webhook_url = response["incoming_webhook"]["url"]

@@ -9,30 +9,54 @@
             = link_to 'Add new card', "#", class: "show-card-form btn btn-secondary"
 
     .page-content
-      .card.w-50.cc-card
-        .card-block
-          = form_tag subscription_path, id: "existing-card" do
+       = form_tag subscription_path, id: "existing-card" do
+        fieldset.form-group
+          .form-check
+            label.form-check-label
+              = radio_button_tag(:plan, "bootstrap", active_radio?("bootstrap"), class: "form-check-input")
+              | Bootstrap Plan ($9/month)
+          .form-check
+            label.form-check-label
+              = radio_button_tag(:plan, "chat", active_radio?("chat"), class: "form-check-input")
+              | Chat Plan ($49/month)
+          .form-check.disabled
+            label.form-check-label
+              = radio_button_tag(:plan, "chat_phone", false, class: "form-check-input", disabled: true)
+              | Chat + Phone Plan ($99/month)
+        .card.w-50.cc-card
+          .card-block
             h3.card-title= current_account.card_brand
             p.card-text= "**** **** **** #{current_account.card_last4}"
             p.card-text= "Expires: #{current_account.card_exp_month}/#{current_account.card_exp_year}"
-            = hidden_field_tag :plan, current_plan
 
-      .horizontal-buttons.text-right
-        input.submit.btn.btn-primary type="submit" value=("Submit Payment")
+        .horizontal-buttons.text-right
+          input.submit.btn.btn-primary type="submit" value=("Submit Payment")
 
 #new-payment{style= "#{(current_account.card_last4.present? ? "display:none" : nil)}"}
   .page-header
-    h1 Use new card
+    h1 Subscribe
   .page-content
-    .card.w-50.cc-card
-      .card-block
-        = form_tag subscription_path, id: "payment-form" do
+    = form_tag subscription_path, id: "payment-form" do
+      fieldset.form-group
+        .form-check
+          label.form-check-label
+            = radio_button_tag(:plan, "bootstrap", active_radio?("bootstrap"), class: "form-check-input")
+            | Bootstrap Plan ($9/month)
+        .form-check
+          label.form-check-label
+            = radio_button_tag(:plan, "chat", active_radio?("chat"), class: "form-check-input")
+            | Chat Plan ($49/month)
+        .form-check.disabled
+          label.form-check-label
+            = radio_button_tag(:plan, "chat_phone", false, class: "form-check-input", disabled: true)
+            | Chat + Phone Plan ($99/month)
+      .card.w-50.cc-card
+        .card-block
           .form-row
             #card-errors
             label for="card-element" 
               | Credit or debit card
             #card-element
-            = hidden_field_tag :plan, current_plan
           .form-row.text-right
             input.submit.btn.btn-primary type="submit" value=("Submit")
 

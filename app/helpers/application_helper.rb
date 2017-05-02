@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def current_plan
-    params[:plan] || "chat_monthly"
-  end
-
   def current_account
     current_user.account
   end
@@ -34,5 +30,13 @@ module ApplicationHelper
             end)
     end
     nil
+  end
+
+  def active_radio?(current)
+    if current == params[:plan]
+      true
+    else
+      false
+    end
   end
 end
