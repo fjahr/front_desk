@@ -15,7 +15,8 @@ class SlackImporter
     elsif Rails.env.production?
       "https://alexafrontdesk.com/webhooks/slack/oauth_callback"
     else
-      "http://localhost:3000/webhooks/slack/oauth_callback"
+      # "http://localhost:3000/webhooks/slack/oauth_callback"
+      "https://30677f6b.ngrok.io/webhooks/slack/oauth_callback"
     end
   end
 

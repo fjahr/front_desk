@@ -3,9 +3,7 @@ class SlackController < ApplicationController
     code = params[:code]
 
     client = Rails.application.secrets.slack_client
-    # regenerate an put into env variables before production
     secret = Rails.application.secrets.slack_secret
-
     redirect = SlackImporter.redirect_uri
 
     response = ::HTTParty.get("https://slack.com/api/oauth.access?client_id=#{client}&client_secret=#{secret}&code=#{code}&redirect_uri=#{redirect}")
