@@ -9,6 +9,16 @@ class SlackImporter
     add_account_name
   end
 
+  def self.redirect_uri
+    if Rails.env.staging?
+      "https://staging.alexafrontdesk.com/webhooks/slack/oauth_callback"
+    elsif Rails.env.production?
+      "https://alexafrontdesk.com/webhooks/slack/oauth_callback"
+    else
+      "http://localhost:3000/webhooks/slack/oauth_callback"
+    end
+  end
+
   private
 
   def add_account_name

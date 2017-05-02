@@ -6,8 +6,7 @@ class SlackController < ApplicationController
     # regenerate an put into env variables before production
     secret = Rails.application.secrets.slack_secret
 
-    redirect = "https://staging.alexafrontdesk.com/webhooks/slack/oauth_callback" if Rails.env.staging?
-    redirect = "https://alexafrontdesk.com/webhooks/slack/oauth_callback" if Rails.env.production?
+    redirect = SlackImporter.redirect_uri
 
     response = ::HTTParty.get("https://slack.com/api/oauth.access?client_id=#{client}&client_secret=#{secret}&code=#{code}&redirect_uri=#{redirect}")
 
