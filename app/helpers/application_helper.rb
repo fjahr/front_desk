@@ -39,4 +39,14 @@ module ApplicationHelper
       false
     end
   end
+
+  def member_name(visit)
+    if visit.member_name && visit.member && visit.member.name
+      "#{visit.member_name} (#{visit.member.name})"
+    elsif visit.member_name
+      "#{visit.member_name} (No match)"
+    else
+      "?"
+    end
+  end
 end

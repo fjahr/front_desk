@@ -10,21 +10,14 @@
           th Time
           th Visitor Name
           th Member Name
-          th State
           th Actions
       tbody
         - @visits.each do |visit|
           tr
             td= visit.created_at.to_date
             td= visit.created_at.strftime("%H:%M")
-            td= visit.visitor_name || "N/A"
-            - if visit.member_name && visit.member && visit.member.name
-              td= "#{visit.member_name} (#{visit.member.name})"
-            - elsif visit.member_name
-              td= "#{visit.member_name} (No match)"
-            - else
-              td= "N/A"
-            td= visit.state
+            td= visit.visitor_name || "?"
+            td= member_name(visit)
             td= link_to 'Remove', visit, method: :delete, data: {confirm: 'Are you sure?'}
     = paginate @visits
   - else

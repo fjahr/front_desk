@@ -3,7 +3,7 @@ class VisitsController < ApplicationController
   before_action :authorize_subscription!
 
   def index
-    @visits = current_account.visits.all.page params[:page]
+    @visits = current_account.visits.all.order(created_at: :desc).page params[:page]
   end
 
   def destroy
