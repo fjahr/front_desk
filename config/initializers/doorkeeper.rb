@@ -15,7 +15,6 @@ Doorkeeper.configure do
     # Put your admin authentication logic here.
     # Example implementation:
     # Admin.find_by_id(session[:admin_id]) || redirect_to(new_admin_session_url)
-    require 'pry'; binding.pry
     redirect_to new_user_session_url unless current_user && current_user.admin?
   end
 
