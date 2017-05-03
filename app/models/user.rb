@@ -9,6 +9,6 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   def admin?
-    self.admin.present? && self.admin.true?
+    self.admin.present? && self.admin == true
   end
 end
