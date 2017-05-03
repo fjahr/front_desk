@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_one :account
 
   validates :email, presence: true
+
+  def admin?
+    self.admin.present? && self.admin.true?
+  end
 end
