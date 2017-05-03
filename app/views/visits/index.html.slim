@@ -16,7 +16,7 @@
           tr
             td= visit.created_at.to_date
             td= visit.created_at.strftime("%H:%M")
-            td= visit.visitor_name || "?"
+            td= visitor_name(visit)
             td= member_name(visit)
             td= link_to 'Remove', visit, method: :delete, data: {confirm: 'Are you sure?'}
     = paginate @visits

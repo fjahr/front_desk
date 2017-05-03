@@ -49,4 +49,12 @@ module ApplicationHelper
       "?"
     end
   end
+
+  def visitor_name(visit)
+    if visit.visitor_name.present?
+      visit.visitor_name.titleize
+    else
+      "?"
+    end
+  end
 end
