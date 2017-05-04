@@ -1,0 +1,2 @@
+class AccountLink < ApplicationRecord
+end

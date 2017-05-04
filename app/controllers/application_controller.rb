@@ -7,7 +7,17 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    dashboard_path || request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+    account_link_id = session[:return_to]
+
+    if account_link_id
+      account_link = AccountLink.find(account_link_id)
+
+      if account_link
+        account_link.return_to
+      else
+        dashboard_path || request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+      end
+    end
   end
 
   def authorize_subscription!
