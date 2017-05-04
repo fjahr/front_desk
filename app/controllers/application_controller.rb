@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
       account_link = AccountLink.find(account_link_id)
 
       if account_link
+        session.delete(:return_to)
+
         account_link.return_to
       else
         dashboard_path || request.env['omniauth.origin'] || stored_location_for(resource) || root_path
