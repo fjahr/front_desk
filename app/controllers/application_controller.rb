@@ -17,8 +17,10 @@ class ApplicationController < ActionController::Base
 
         account_link.return_to
       else
-        dashboard_path || request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+        dashboard_path #|| request.env['omniauth.origin'] || stored_location_for(resource) || root_path
       end
+    else
+      dashboard_path
     end
   end
 
