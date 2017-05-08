@@ -69,15 +69,23 @@ class Alexa::Response
             visitor_name = slots["VisitorName"]["value"]
             member_name = slots["MemberName"]["value"]
 
-            member = MemberFinder.find(@account, member_name)
+            if visitor_name.present? && member_name.present?
+              member = MemberFinder.find(@account, member_name)
 
-            if member.present?
-              notifier = SlackNotification.new(@account)
-              notifier.send(member_name, visitor_name)
+              if member.present?
+                notifier = SlackNotification.new(@account)
+                notifier.send(member_name, visitor_name)
 
-              resp.add_speech("Thanks #{visitor_name}. I notified #{member.name} of your arrival.")
+                resp.add_speech("Thanks #{visitor_name}. I notified #{member.name} of your arrival.")
+              else
+                resp.add_speech("Sorry, #{visitor_name}. I could not find a member named #{member_name}. Please try a different name.")
+              end
+            elsif visitor_name.present? && !member_name.present?
+              resp.add_speech("Sorry. I did not get who you want to visit. Please try again.")
+            elsif !visitor_name.present? && member_name.present?
+              resp.add_speech("Sorry. I did not get your name. Please try again.")
             else
-              resp.add_speech("Sorry, #{visitor_name}. I could not find a member named #{member_name}. Please try a different name.")
+              resp.add_speech("Sorry. I did not understand. Please try again.")
             end
 
             session_end = true
