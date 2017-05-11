@@ -56,6 +56,7 @@ end
 gem 'mailgun-ruby', '~>1.1.4'
 gem 'mail_form'
 gem "sentry-raven"
+gem 'remote_syslog_logger'
 
 # prelim change to track development of active admin 1.0
 gem 'inherited_resources', '~> 1.7'
