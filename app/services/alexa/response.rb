@@ -106,6 +106,16 @@ class Alexa::Response
     resp.build_response(session_end)
   end
 
+  def self.link_account_response
+    resp = AlexaRubykit::Response.new
+    session_end = true
+
+    resp.add_speech("Please go to your Alexa app and link the skill to your Front Desk account.")
+    resp.add_card(type: "LinkAccount")
+
+    resp.build_response(session_end)
+  end
+
   private
 
   def intent_name

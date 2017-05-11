@@ -4,10 +4,13 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
   respond_to :json
 
   def create
-    render status: 401 unless current_doorkeeper_user
     render status: 400 unless valid_request
 
-    resp = ::Alexa::Response.new(current_doorkeeper_user.account, params)
+    if current_doorkeeper_user
+      resp = ::Alexa::Response.new(current_doorkeeper_user.account, params)
+    else
+      resp = ::Alexa::Response.link_account_response
+    end
 
     render json: resp.build
   end
