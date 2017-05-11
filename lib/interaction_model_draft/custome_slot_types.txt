@@ -3,6 +3,7 @@ Names
 ben
 thomas
 richard
+daniel
 john smith
 william johnson
 robert williams
