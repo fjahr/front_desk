@@ -12,9 +12,9 @@ class Alexa::Response
     case intent_type
     when "LaunchRequest"
       if @account.name.present?
-        resp.add_speech("Welcome to #{@account.name}! Please tell me your name.")
+        resp.add_speech("Welcome to #{@account.name}! Who shall I say is here?")
       else
-        resp.add_speech('Welcome! Please tell me your name.')
+        resp.add_speech('Welcome! Who shall I say is here?')
       end
 
       @visit.update(state: Visit.states.start)
