@@ -14,6 +14,7 @@ module FrontDesk
     Raven.configure do |config|
       config.dsn = 'https://ab593a1ce5f74cd68cd4a8562238eaa5:22d502fbfa524cae9e99f86f5f1babdb@sentry.io/157388'
       config.environments = ['staging', 'production']
+      config.silence_ready = true
     end
 
     config.generators do |g|
