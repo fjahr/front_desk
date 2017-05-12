@@ -23,6 +23,10 @@ class Alexa::Response
         @visit.update(state: Visit.states.cancel)
         resp.add_speech("Good bye.")
         session_end = true
+      elsif (intent_name == "AMAZON.HelpIntent")
+        resp.add_speech(
+          "Please tell who you are and who you are looking to meet. I will notify the right person for you. If you don't know who you want to meet, just say anyone when asked who you want to meet."
+        )
       else
         if @visit.state.present?
           case @visit.state
@@ -54,7 +58,6 @@ class Alexa::Response
               @visit.update(state: Visit.states.end)
               session_end = true
             elsif intent_name == "AMAZON.NoIntent"
-              # not triggered properly atm
               resp.add_speech("Ok, let's try again: who would you like to see?")
 
               @visit.update(state: Visit.states.visitor_name_given)
@@ -93,10 +96,6 @@ class Alexa::Response
           end
         end
       end
-    when "AMAZON.HelpIntent"
-      resp.add_speech(
-        "Let me know who you are and who you are looking to meet. If you don't know who you want to meet, just say anyone."
-      )
     when "SessionEndedRequest"
       session_end = true
     else
