@@ -111,7 +111,7 @@ class Alexa::Response
     session_end = true
 
     resp.add_speech("Please go to your Alexa app and link the skill to your Front Desk account.")
-    resp.add_card(type: "LinkAccount")
+    resp.add_card("LinkAccount")
 
     resp.build_response(session_end)
   end

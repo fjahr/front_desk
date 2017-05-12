@@ -7,16 +7,17 @@ class Api::V1::Alexa::HandlersController < ActionController::Base
     render status: 400 unless valid_request
 
     if current_doorkeeper_user
-      resp = ::Alexa::Response.new(current_doorkeeper_user.account, params)
+      resp = ::Alexa::Response.new(current_doorkeeper_user.account, params).build
     else
       resp = ::Alexa::Response.link_account_response
     end
 
-    render json: resp.build
+    render json: resp
   end
 
   def current_doorkeeper_user
-    return User.find(6) if Rails.env.development?
+    # return User.find(6) if Rails.env.development?
+    return nil unless doorkeeper_token
 
     @current_doorkeeper_user ||= User.find(doorkeeper_token.resource_owner_id)
   end
