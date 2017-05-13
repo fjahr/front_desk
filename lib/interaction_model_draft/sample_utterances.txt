@@ -1,4 +1,8 @@
 GiveName {Name}
+GiveName this is {Name}
+GiveName I am {Name}
+GiveName this is the {Name}
+GiveName I am the {Name}
 
 NotifyArrival that {VisitorName} is here to see {MemberName}
 NotifyArrival to tell {MemberName} that {VisitorName} is here

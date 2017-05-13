@@ -28,7 +28,32 @@ class Alexa::Response
           "Please tell who you are and who you are looking to meet. I will notify the right person for you. If you don't know who you want to meet, just say anyone when asked who you want to meet."
         )
       else
-        if @visit.state.present?
+        if intent_name == "NotifyArrival"
+          visitor_name = slots["VisitorName"]["value"]
+          member_name = slots["MemberName"]["value"]
+
+          if visitor_name.present? && member_name.present?
+            member = MemberFinder.find(@account, member_name)
+
+            if member.present?
+              notifier = SlackNotification.new(@account)
+              notifier.send(member_name, visitor_name)
+
+              resp.add_speech("Thanks #{visitor_name}. I notified #{member.name} of your arrival.")
+            else
+              resp.add_speech("Sorry, #{visitor_name}. I could not find a member named #{member_name}. Please try a different name.")
+            end
+          elsif visitor_name.present? && !member_name.present?
+            resp.add_speech("Sorry. I did not get who you want to visit. Please try again.")
+          elsif !visitor_name.present? && member_name.present?
+            resp.add_speech("Sorry. I did not get your name. Please try again.")
+          else
+            resp.add_speech("Sorry. I did not understand. Please try again.")
+          end
+
+          session_end = true
+          @visit.update(member_name: member_name, visitor_name: visitor_name, member: member, state: Visit.states.end)
+        elsif intent_name == "GiveName" && @visit.state.present?
           case @visit.state
           when Visit.states.start
             visitor_name = slots["Name"]["value"]
@@ -67,33 +92,7 @@ class Alexa::Response
             end
           end
         else
-          case intent_name
-          when "NotifyArrival"
-            visitor_name = slots["VisitorName"]["value"]
-            member_name = slots["MemberName"]["value"]
-
-            if visitor_name.present? && member_name.present?
-              member = MemberFinder.find(@account, member_name)
-
-              if member.present?
-                notifier = SlackNotification.new(@account)
-                notifier.send(member_name, visitor_name)
-
-                resp.add_speech("Thanks #{visitor_name}. I notified #{member.name} of your arrival.")
-              else
-                resp.add_speech("Sorry, #{visitor_name}. I could not find a member named #{member_name}. Please try a different name.")
-              end
-            elsif visitor_name.present? && !member_name.present?
-              resp.add_speech("Sorry. I did not get who you want to visit. Please try again.")
-            elsif !visitor_name.present? && member_name.present?
-              resp.add_speech("Sorry. I did not get your name. Please try again.")
-            else
-              resp.add_speech("Sorry. I did not understand. Please try again.")
-            end
-
-            session_end = true
-            @visit.update(member_name: member_name, visitor_name: visitor_name, member: member, state: Visit.states.end)
-          end
+          resp.add_speech('Sorry, something went wrong. Please try again.')
         end
       end
     when "SessionEndedRequest"
